@@ -96,6 +96,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .social{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:22px}
 .social a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:2px}
 .social a:hover{color:#fff}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+label.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+label.check input{width:auto;margin-top:5px;flex:none}
+.fs{min-height:1.4em;font-size:15px}
+.fs.err{color:#e8a39a}
+.btn[disabled]{opacity:.6;cursor:wait}
+.thanks{padding:26px;border:1px solid var(--brass)}
+.thanks h3{font-size:26px;margin-bottom:8px}
 .call{position:fixed;right:14px;bottom:14px;z-index:6}
 @media(min-width:761px){.call{display:none}}
 @media(prefers-reduced-motion:reduce){.floor i{animation:none;opacity:1}html{scroll-behavior:auto}}
@@ -191,13 +199,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <p class="lead">Telefon: <a href="tel:+420725967231">+420 725 967 231</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a><br>Lázeňská 59, 561 12 Brandýs nad Orlicí</p>
   <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a></p>
  </div>
- <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Ukázka formuláře – odeslání zatím nefunguje'">
-  <div class="g2"><label>Jméno<input required autocomplete="name"></label><label>Telefon<input required type="tel" autocomplete="tel"></label></div>
-  <div class="g2"><label>E-mail<input type="email" autocomplete="email"></label><label>Místo realizace<input placeholder="Obec"></label></div>
-  <div class="g2"><label>Typ práce<select><option>Koupelna</option><option>Obklad</option><option>Dlažba</option><option>Jiné</option></select></label><label>Termín<input placeholder="Např. jaro 2027"></label></div>
-  <label>Popis<textarea></textarea></label>
-  <label>Fotografie nebo plánek<input type="file" accept="image/*,.pdf" multiple></label>
-  <button class="btn">Odeslat poptávku</button>
+ <form id="poptavka" novalidate>
+  <div class="hp" aria-hidden="true"><label>Web<input name="website" tabindex="-1" autocomplete="off"></label></div>
+  <input type="hidden" name="t" value="">
+  <div class="g2"><label>Jméno<input name="name" required maxlength="120" autocomplete="name"></label><label>Telefon<input name="phone" required type="tel" maxlength="40" autocomplete="tel"></label></div>
+  <div class="g2"><label>E-mail<input name="email" type="email" maxlength="200" autocomplete="email"></label><label>Místo realizace<input name="location" maxlength="200" placeholder="Obec" autocomplete="address-level2"></label></div>
+  <div class="g2"><label>Typ práce<select name="work_type"><option>Koupelna</option><option>Obklad</option><option>Dlažba</option><option>Jiné</option></select></label><label>Termín<input name="timing" maxlength="120" placeholder="Např. jaro 2027"></label></div>
+  <label>Popis<textarea name="description" maxlength="4000"></textarea></label>
+  <label>Fotografie nebo plánek <span class="small">(až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
+  <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem vyřízení poptávky.</span></label>
+  <button class="btn" type="submit">Odeslat poptávku</button>
+  <p id="fs" class="fs" role="status" aria-live="polite"></p>
   <p class="small">Údaje použijeme jen k vyřízení poptávky.</p>
  </form>
 </div></section>
@@ -206,5 +218,49 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <a class="btn call" href="tel:+420725967231">Zavolat</a>
 <script>
 const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.createElement('i');t.style.animationDelay=(i%8*70+Math.floor(i/8)*45)+'ms';f.appendChild(t)}
+
+(function(){
+ var API='https://abmlhxkufkphmkqjjvwi.supabase.co/functions/v1/poptavka';
+ var form=document.getElementById('poptavka'); if(!form) return;
+ var st=document.getElementById('fs'), btn=form.querySelector('button[type=submit]');
+ form.elements.t.value=Date.now();
+ function say(msg,err){st.textContent=msg;st.className='fs'+(err?' err':'')}
+ async function shrink(f){
+  if(!f.type||f.type.indexOf('image/')!==0) return f;
+  try{
+   var bmp=await createImageBitmap(f,{imageOrientation:'from-image'});
+   var k=Math.min(1,1600/Math.max(bmp.width,bmp.height)), w=Math.round(bmp.width*k), h=Math.round(bmp.height*k);
+   var c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(bmp,0,0,w,h);
+   var b=await new Promise(function(r){c.toBlob(r,'image/jpeg',.82)});
+   return b?new File([b],f.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'}):f;
+  }catch(e){return f}
+ }
+ form.addEventListener('submit',async function(ev){
+  ev.preventDefault();
+  var e=form.elements;
+  if(!e.name.value.trim()){say('Vyplňte prosím jméno.',1);e.name.focus();return}
+  if(e.phone.value.replace(/\D/g,'').length<7){say('Zadejte prosím platný telefon.',1);e.phone.focus();return}
+  if(!e.consent.checked){say('Potvrďte prosím souhlas se zpracováním údajů.',1);e.consent.focus();return}
+  var files=Array.prototype.slice.call(e.photos.files);
+  if(files.length>6){say('Nahrát lze nejvýše 6 souborů.',1);return}
+  btn.disabled=true; say(files.length?'Zmenšuji a odesílám fotografie…':'Odesílám…');
+  try{
+   var fd=new FormData(form); fd.delete('photos');
+   for(var i=0;i<files.length;i++){var f=await shrink(files[i]); if(f.size>6*1024*1024){say('Soubor „'+files[i].name+'“ je příliš velký (nejvýše 6 MB).',1);btn.disabled=false;return} fd.append('photos',f,f.name)}
+   var ctl=new AbortController(), to=setTimeout(function(){ctl.abort()},60000);
+   var res=await fetch(API,{method:'POST',body:fd,signal:ctl.signal}); clearTimeout(to);
+   var data={}; try{data=await res.json()}catch(_){}
+   if(res.ok&&data.ok){
+    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, poptávku jsme přijali.</h3><p>Ozveme se do dvou pracovních dnů na telefon, který jste uvedli.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
+    return;
+   }
+   say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);
+   if(data.field&&e[data.field]) e[data.field].focus();
+  }catch(err){
+   say('Odeslání se nepodařilo, zkontrolujte připojení nebo zavolejte na +420 725 967 231.',1);
+  }
+  btn.disabled=false;
+ });
+})();
 </script>
 </body></html>
