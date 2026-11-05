@@ -96,6 +96,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .social{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:22px}
 .social a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:2px}
 .social a:hover{color:#fff}
+.offer{margin:6px 0 26px;padding:22px;border:1px solid var(--brass)}
+.offer .price{font-size:40px;line-height:1.1;font-weight:700;color:#fff;margin-bottom:6px}
+.offer .price small{font-size:14px;font-weight:400;color:var(--stone);margin-left:6px}
+.offer .credit{margin-bottom:16px}
+.checks{list-style:none;padding:0;margin:0 0 14px}
+.checks li{position:relative;padding:0 0 12px 32px}
+.checks li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--brass);font-weight:700;font-size:20px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 label.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
 label.check input{width:auto;margin-top:5px;flex:none}
@@ -195,8 +202,17 @@ label.check input{width:auto;margin-top:5px;flex:none}
 <section id="kontakt"><div class="wrap two">
  <div>
   <h2>Cenová nabídka a rezervace termínu</h2>
-  <p class="lead">Napište, co potřebujete. Zpracování cenové nabídky je zpoplatněné: poplatek uhradíte předem, tím si rezervujete termín a na konci zakázky se vám <b>celý odečte z ceny</b>.</p>
-  <p class="lead">Po odeslání se vám ozveme do dvou pracovních dnů s platebními údaji.</p>
+  <div class="offer">
+   <p class="price"><span data-fee>4 000 Kč</span> <small>jednorázově, nejsme plátci DPH</small></p>
+   <p class="credit"><b>Celý poplatek se vám na konci zakázky odečte z ceny.</b> Nic navíc neplatíte, jen si předem zajistíte náš čas a termín.</p>
+   <ul class="checks">
+    <li><b>Rezervace termínu zahájení.</b> Po zaplacení se s vámi domluvíme, kdy začneme, a termín držíme pro vás. Žádné „ozveme se někdy".</li>
+    <li><b>Podrobná cenová nabídka na míru.</b> Rozpis prací i materiálů, takže předem víte, za co platíte. Žádný odhad od oka.</li>
+    <li><b>Schůzka přímo na místě.</b> Pokud nemáte vizualizaci, přijedeme se podívat, probereme s vámi rozložení obkladů a dlažby, návaznosti, rohy, niky i sprchový kout a navrhneme řešení.</li>
+    <li><b>Přesně to, co potřebujete.</b> Nabídku stavíme na vaší koupelně, ne ze šablony.</li>
+   </ul>
+   <p class="small">Napište nám níže, co plánujete. Po odeslání se vám do dvou pracovních dnů ozveme s platebními údaji.</p>
+  </div>
   <p class="lead">Telefon: <a href="tel:+420725967231">+420 725 967 231</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a><br>Lázeňská 59, 561 12 Brandýs nad Orlicí</p>
   <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a></p>
  </div>
@@ -209,7 +225,7 @@ label.check input{width:auto;margin-top:5px;flex:none}
   <label>Popis<textarea name="description" maxlength="4000"></textarea></label>
   <label>Fotografie nebo plánek <span class="small">(až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
   <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem zpracování nabídky a rezervace termínu.</span></label>
-  <button class="btn" type="submit">Objednat nabídku</button>
+  <button class="btn" type="submit">Objednat nabídku za <span data-fee>4 000 Kč</span></button>
   <p id="fs" class="fs" role="status" aria-live="polite"></p>
   <p class="small">Údaje použijeme jen k vyřízení objednávky nabídky.</p>
  </form>
@@ -222,6 +238,8 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
 
 (function(){
  var API='https://abmlhxkufkphmkqjjvwi.supabase.co/functions/v1/poptavka';
+ var FEE='4 000 Kč'; // jediné místo, kde se mění výše poplatku
+ Array.prototype.forEach.call(document.querySelectorAll('[data-fee]'),function(e){e.textContent=FEE});
  var form=document.getElementById('poptavka'); if(!form) return;
  var st=document.getElementById('fs'), btn=form.querySelector('button[type=submit]');
  form.elements.t.value=Date.now();
@@ -252,7 +270,7 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
    var res=await fetch(API,{method:'POST',body:fd,signal:ctl.signal}); clearTimeout(to);
    var data={}; try{data=await res.json()}catch(_){}
    if(res.ok&&data.ok){
-    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, objednávku nabídky jsme přijali.</h3><p>Do dvou pracovních dnů se vám ozveme s platebními údaji. Po uhrazení poplatku vám zarezervujeme termín a zpracujeme nabídku.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
+    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, objednávku nabídky jsme přijali.</h3><p>Do dvou pracovních dnů se vám ozveme s platebními údaji k poplatku. Po jeho uhrazení vám zarezervujeme termín a zpracujeme nabídku.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
     return;
    }
    say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);
