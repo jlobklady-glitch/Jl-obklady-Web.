@@ -206,9 +206,10 @@ label.check input{width:auto;margin-top:5px;flex:none}
    <p class="price"><span data-fee>4 000 Kč</span> <small>jednorázově, nejsme plátci DPH</small></p>
    <p class="credit"><b>Celý poplatek se vám na konci zakázky odečte z ceny.</b> Nic navíc neplatíte, jen si předem zajistíte náš čas a termín.</p>
    <ul class="checks">
-    <li><b>Rezervace termínu zahájení.</b> Po zaplacení se s vámi domluvíme, kdy začneme, a termín držíme pro vás. Žádné „ozveme se někdy".</li>
+    <li><b>Rezervace termínu.</b> Termín zahájení domluvíme podle vaší stavby a její připravenosti a po zaplacení ho držíme pro vás. Žádné „ozveme se někdy".</li>
     <li><b>Podrobná cenová nabídka na míru.</b> Rozpis prací i materiálů, takže předem víte, za co platíte. Žádný odhad od oka.</li>
     <li><b>Schůzka přímo na místě.</b> Pokud nemáte vizualizaci, přijedeme se podívat, probereme s vámi rozložení obkladů a dlažby, návaznosti, rohy, niky i sprchový kout a navrhneme řešení.</li>
+    <li><b>Orientační měření vlhkosti podkladu.</b> U podlahového topení po provedené nátopové zkoušce zkontrolujeme, jestli je podklad připravený na pokládku.</li>
     <li><b>Přesně to, co potřebujete.</b> Nabídku stavíme na vaší koupelně, ne ze šablony.</li>
    </ul>
    <p class="small">Napište nám níže, co plánujete. Po odeslání se vám do dvou pracovních dnů ozveme s platebními údaji.</p>
@@ -270,7 +271,7 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
    var res=await fetch(API,{method:'POST',body:fd,signal:ctl.signal}); clearTimeout(to);
    var data={}; try{data=await res.json()}catch(_){}
    if(res.ok&&data.ok){
-    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, objednávku nabídky jsme přijali.</h3><p>Do dvou pracovních dnů se vám ozveme s platebními údaji k poplatku. Po jeho uhrazení vám zarezervujeme termín a zpracujeme nabídku.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
+    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, objednávku nabídky jsme přijali.</h3><p>Do dvou pracovních dnů se vám ozveme s platebními údaji k poplatku. Po jeho uhrazení s vámi domluvíme termín zahájení podle připravenosti stavby a zpracujeme nabídku.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
     return;
    }
    say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);
