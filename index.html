@@ -111,7 +111,11 @@ label.check input{width:auto;margin-top:5px;flex:none}
 .btn[disabled]{opacity:.6;cursor:wait}
 .thanks{padding:26px;border:1px solid var(--brass)}
 .thanks h3{font-size:26px;margin-bottom:8px}
-.call{position:fixed;right:14px;bottom:14px;z-index:6}
+.call{position:fixed;right:14px;bottom:14px;z-index:6;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.call-menu{display:none;flex-direction:column;gap:6px;background:var(--slab);border:1px solid var(--brass);border-radius:2px;padding:8px;min-width:210px}
+.call.open .call-menu{display:flex}
+.call-menu a{color:var(--porc);text-decoration:none;font:600 16px var(--b);padding:12px 14px;border:1px solid var(--joint);border-radius:2px;display:block}
+.call-menu a small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}
 @media(min-width:761px){.call{display:none}}
 @media(prefers-reduced-motion:reduce){.floor i{animation:none;opacity:1}html{scroll-behavior:auto}}
 </style>
@@ -215,7 +219,7 @@ label.check input{width:auto;margin-top:5px;flex:none}
    </ul>
    <p class="small">Napište nám níže, co plánujete. Po odeslání se vám do dvou pracovních dnů ozveme s platebními údaji.</p>
   </div>
-  <p class="lead">Telefon: <a href="tel:+420725967231">+420 725 967 231</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a><br>Lázeňská 59, 561 12 Brandýs nad Orlicí</p>
+  <p class="lead">Telefon: Lukáš <a href="tel:+420725967231">+420 725 967 231</a> · Honza <a href="tel:+420732523129">+420 732 523 129</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a><br>Lázeňská 59, 561 12 Brandýs nad Orlicí</p>
   <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
  </div>
  <form id="poptavka" novalidate>
@@ -234,8 +238,9 @@ label.check input{width:auto;margin-top:5px;flex:none}
 </div></section>
 </main>
 <footer><div class="wrap"><span>JL-OBKLADY · Lukáš Heger · IČO 29970504</span><span>Obklady, dlažby, koupelny, dekorativní stěrky</span></div></footer>
-<a class="btn call" href="tel:+420725967231">Zavolat</a>
+<div class="call" id="call"><div class="call-menu" id="callMenu"><a href="tel:+420725967231">Lukáš<small>+420 725 967 231</small></a><a href="tel:+420732523129">Honza<small>+420 732 523 129</small></a></div><button type="button" class="btn" id="callBtn" aria-expanded="false" aria-controls="callMenu">Zavolat</button></div>
 <script>
+(function(){var c=document.getElementById('call'),b=document.getElementById('callBtn');if(!c||!b)return;function set(o){c.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false')}b.addEventListener('click',function(e){e.stopPropagation();set(!c.classList.contains('open'))});document.addEventListener('click',function(e){if(!c.contains(e.target))set(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)})})();
 const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.createElement('i');t.style.animationDelay=(i%8*70+Math.floor(i/8)*45)+'ms';f.appendChild(t)}
 
 (function(){
@@ -278,7 +283,7 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
    say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);
    if(data.field&&e[data.field]) e[data.field].focus();
   }catch(err){
-   say('Odeslání se nepodařilo, zkontrolujte připojení nebo zavolejte na +420 725 967 231.',1);
+   say('Odeslání se nepodařilo, zkontrolujte připojení nebo zavolejte na +420 725 967 231 (Lukáš) nebo +420 732 523 129 (Honza).',1);
   }
   btn.disabled=false;
  });
