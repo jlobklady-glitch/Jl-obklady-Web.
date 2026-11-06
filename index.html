@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JL-OBKLADY – obkladači pro východní Čechy a okolí</title>
-<meta name="description" content="Precizní obklady a dlažby, koupelny na klíč, velkoformáty, Jolly a kamenické rohy. Obkladači pro východní Čechy a okolí: Pardubicko, Hradecko, Orlickoústecko, Chrudimsko, Svitavsko a Rychnovsko. Cenovou nabídku a rezervaci termínu objednáte online.">
+<meta name="description" content="Precizní obklady a dlažby, koupelny na klíč, velkoformáty, Jolly a kamenické rohy. Obkladači pro východní Čechy a okolí: Pardubicko, Hradecko, Orlickoústecko, Chrudimsko, Svitavsko a Rychnovsko. Orientační cenu zdarma a nezávazně na základě vašich rozměrů.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -103,6 +103,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .checks{list-style:none;padding:0;margin:0 0 14px}
 .checks li{position:relative;padding:0 0 12px 32px}
 .checks li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--brass);font-weight:700;font-size:20px}
+.rooms{border:1px solid var(--joint);padding:16px;display:grid;gap:12px;min-width:0}
+.rooms legend{padding:0 8px;color:var(--stone);font:600 16px var(--b)}
+.room{border:1px solid var(--joint);background:var(--slab);padding:14px;display:grid;gap:10px}
+.room .rh{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.room .rh b{font:600 16px var(--b);color:var(--porc)}
+.room .rm{background:none;border:0;color:var(--mut);font:inherit;text-decoration:underline;cursor:pointer;padding:4px}
+.room .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.room .opts{display:grid;gap:8px}
+.room .sub{display:none;grid-template-columns:1fr 1fr;gap:10px;padding-left:28px}
+.room .sub.on{display:grid}
+.offer h3{font-size:22px;margin-bottom:8px}
+@media(max-width:560px){.room .g3{grid-template-columns:1fr 1fr}.room .g3 label:first-child{grid-column:1/3}}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 label.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
 label.check input{width:auto;margin-top:5px;flex:none}
@@ -123,7 +135,7 @@ label.check input{width:auto;margin-top:5px;flex:none}
 <body>
 <header><div class="wrap">
  <a class="logo" href="#">JL<b>-</b>OBKLADY</a>
- <nav><a href="#sluzby">Služby</a><a href="#realizace">Realizace</a><a href="#jolly">Jolly rohy</a><a href="#postup">Postup</a><a href="#kontakt" class="btn">Objednat nabídku</a></nav>
+ <nav><a href="#sluzby">Služby</a><a href="#realizace">Realizace</a><a href="#jolly">Jolly rohy</a><a href="#postup">Postup</a><a href="#kontakt" class="btn">Nezávazná poptávka</a></nav>
 </div></header>
 
 <main>
@@ -132,7 +144,7 @@ label.check input{width:auto;margin-top:5px;flex:none}
  <div class="wrap">
   <h1>Precizní obklady. Dokonalý detail.</h1>
   <p>Koupelny, dlažby a velkoformáty ve východních Čechách a okolí. Každou spáru, roh a niku řešíme tak, aby vydržely a vypadaly čistě i po letech.</p>
-  <div class="cta"><a class="btn" href="#kontakt">Objednat nabídku</a><a class="btn ghost" href="#realizace">Prohlédnout realizace</a></div>
+  <div class="cta"><a class="btn" href="#kontakt">Nezávazná poptávka</a><a class="btn ghost" href="#realizace">Prohlédnout realizace</a></div>
   <div class="facts"><span>Zaměření a konzultace</span><span>Hydroizolace dle systému Mapei</span><span>Jolly a kamenické rohy</span><span>Fixní cenová nabídka</span></div>
  </div>
 </div>
@@ -181,12 +193,12 @@ label.check input{width:auto;margin-top:5px;flex:none}
 <section id="postup"><div class="wrap">
  <h2>Jak probíhá spolupráce</h2>
  <ol class="steps" style="padding:0">
-  <li><b>Objednávka</b><span>Vyplníte formulář a pošlete popis a fotky nebo plánek.</span></li>
-  <li><b>Poplatek a termín</b><span>Uhradíte poplatek <span data-fee>4 000 Kč</span>. Termín zahájení domluvíme podle připravenosti stavby.</span></li>
-  <li><b>Schůzka na místě</b><span>Zaměříme, probereme rozložení, materiály a detaily. U podlahového topení orientačně změříme vlhkost podkladu.</span></li>
-  <li><b>Cenová nabídka</b><span>Rozepsaná po položkách, připravená na míru.</span></li>
+  <li><b>Nezávazná poptávka</b><span>Vyplníte formulář s rozměry místností a výběrem prací. Je zdarma.</span></li>
+  <li><b>Orientační cena</b><span>Z vašich údajů připravíme orientační cenu a pošleme vám ji e-mailem.</span></li>
+  <li><b>Balíček (nepovinný)</b><span>Chcete přesný rozpočet? Objednáte balíček za <span data-fee>4 000 Kč</span>, který rezervuje termín.</span></li>
+  <li><b>Zaměření a rozpočet</b><span>Zaměříme na místě, probereme rozložení a připravíme položkový rozpočet s materiály.</span></li>
   <li><b>Realizace</b><span>Čistá práce a pravidelná komunikace.</span></li>
-  <li><b>Předání</b><span>Předávací protokol a záruka. Poplatek se vám odečte z konečné ceny.</span></li>
+  <li><b>Předání</b><span>Předávací protokol a záruka. Cena balíčku se odečte z konečné ceny.</span></li>
  </ol>
 </div></section>
 
@@ -206,18 +218,17 @@ label.check input{width:auto;margin-top:5px;flex:none}
 
 <section id="kontakt"><div class="wrap two">
  <div>
-  <h2>Cenová nabídka a rezervace termínu</h2>
+  <h2>Nezávazná poptávka</h2>
+  <p class="lead">Napište nám, co plánujete, a zadejte rozměry. <b>Orientační cenu vám připravíme zdarma a nezávazně.</b></p>
   <div class="offer">
-   <p class="price"><span data-fee>4 000 Kč</span> <small>jednorázově, nejsme plátci DPH</small></p>
-   <p class="credit"><b>Celý poplatek se vám na konci zakázky odečte z ceny.</b> Nic navíc neplatíte, jen si předem zajistíte náš čas a termín.</p>
+   <h3>Chcete přesný rozpočet? Balíček za <span data-fee>4 000 Kč</span></h3>
+   <p class="credit"><b>Celá cena balíčku se vám na konci zakázky odečte z ceny.</b> Objednáte ho, až budete chtít jít dál, a tím si rezervujete termín.</p>
    <ul class="checks">
-    <li><b>Rezervace termínu.</b> Termín zahájení domluvíme podle vaší stavby a její připravenosti a po zaplacení ho držíme pro vás. Žádné „ozveme se někdy".</li>
-    <li><b>Podrobná cenová nabídka na míru.</b> Rozpis prací i materiálů, takže předem víte, za co platíte. Žádný odhad od oka.</li>
-    <li><b>Schůzka přímo na místě.</b> Pokud nemáte vizualizaci, přijedeme se podívat, probereme s vámi rozložení obkladů a dlažby, návaznosti, rohy, niky i sprchový kout a navrhneme řešení.</li>
+    <li><b>Rezervace termínu.</b> Termín zahájení domluvíme podle vaší stavby a její připravenosti a po zaplacení ho držíme pro vás.</li>
+    <li><b>Položkový rozpočet s cenou materiálu.</b> Rozpis prací i materiálů, takže předem víte, za co platíte.</li>
+    <li><b>Zaměření a schůzka přímo na místě.</b> Probereme rozložení obkladů a dlažby, návaznosti, rohy, niky i sprchový kout a navrhneme řešení.</li>
     <li><b>Orientační měření vlhkosti podkladu.</b> U podlahového topení po provedené nátopové zkoušce zkontrolujeme, jestli je podklad připravený na pokládku.</li>
-    <li><b>Přesně to, co potřebujete.</b> Nabídku stavíme na vaší koupelně, ne ze šablony.</li>
    </ul>
-   <p class="small">Napište nám níže, co plánujete. Po odeslání se vám do dvou pracovních dnů ozveme s platebními údaji.</p>
   </div>
   <p class="lead">Telefon: Lukáš <a href="tel:+420725967231">+420 725 967 231</a> · Honza <a href="tel:+420732523129">+420 732 523 129</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a></p>
   <p class="small">Působíme ve východních Čechách a okolí: Pardubicko, Hradecko, Orlickoústecko, Chrudimsko, Svitavsko a Rychnovsko.</p>
@@ -228,13 +239,20 @@ label.check input{width:auto;margin-top:5px;flex:none}
   <input type="hidden" name="t" value="">
   <div class="g2"><label>Jméno<input name="name" required maxlength="120" autocomplete="name"></label><label>Telefon<input name="phone" required type="tel" maxlength="40" autocomplete="tel"></label></div>
   <div class="g2"><label>E-mail<input name="email" type="email" maxlength="200" autocomplete="email"></label><label>Místo realizace<input name="location" maxlength="200" placeholder="Obec" autocomplete="address-level2"></label></div>
-  <div class="g2"><label>Typ práce<select name="work_type"><option>Koupelna</option><option>Obklad</option><option>Dlažba</option><option>Jiné</option></select></label><label>Termín<input name="timing" maxlength="120" placeholder="Např. jaro 2027"></label></div>
-  <label>Popis<textarea name="description" maxlength="4000"></textarea></label>
+  <label>Termín<input name="timing" maxlength="120" placeholder="Např. jaro 2027"></label>
+  <input type="hidden" name="work_type" value="">
+  <input type="hidden" name="rooms" value="">
+  <fieldset class="rooms"><legend>Místnosti a rozměry</legend>
+   <p class="small">Pro orientační cenu přidejte každou místnost, kde se bude obkládat nebo dlaždit. Rozměry stačí přibližné.</p>
+   <div id="rooms"></div>
+   <button class="btn ghost" type="button" id="addRoom">+ Přidat místnost</button>
+  </fieldset>
+  <label>Poznámka<textarea name="description" maxlength="4000" placeholder="Např. materiál už máte, jaký chcete vzhled, co je potřeba vědět o stavbě"></textarea></label>
   <label>Fotografie nebo plánek <span class="small">(až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
-  <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem zpracování nabídky a rezervace termínu.</span></label>
-  <button class="btn" type="submit">Objednat nabídku za <span data-fee>4 000 Kč</span></button>
+  <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem zpracování orientační nabídky.</span></label>
+  <button class="btn" type="submit">Odeslat nezávaznou poptávku</button>
   <p id="fs" class="fs" role="status" aria-live="polite"></p>
-  <p class="small">Údaje použijeme jen k vyřízení objednávky nabídky.</p>
+  <p class="small">Údaje použijeme jen k vyřízení poptávky.</p>
  </form>
 </div></section>
 </main>
@@ -251,6 +269,55 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
  var form=document.getElementById('poptavka'); if(!form) return;
  var st=document.getElementById('fs'), btn=form.querySelector('button[type=submit]');
  form.elements.t.value=Date.now();
+
+ // ---- tabulka místností ----
+ var TYPES=[['koupelna','Koupelna'],['wc','WC'],['kuchyn','Kuchyň'],['chodba','Chodba / hala'],['jine','Jiná místnost']];
+ var FORMATS=[['nevim','Formát zatím nevím'],['30x60','do 30×60 cm'],['60x60','60×60 cm'],['60x120','60×120 cm'],['120x120','120×120 cm'],['120x280','velkoformát (desky)']];
+ var roomsBox=document.getElementById('rooms'), addBtn=document.getElementById('addRoom');
+ function opt(a,sel){return a.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===sel?' selected':'')+'>'+x[1]+'</option>'}).join('')}
+ function chk(k,label,on){return '<label class="check"><input type="checkbox" data-k="'+k+'"'+(on?' checked':'')+'><span>'+label+'</span></label>'}
+ function addRoom(type){
+  if(roomsBox.children.length>=8){return}
+  var d=document.createElement('div'); d.className='room'; type=type||'koupelna';
+  d.innerHTML='<div class="rh"><b></b><button type="button" class="rm">Odebrat</button></div>'+
+   '<div class="g2"><label>Typ místnosti<select data-k="type">'+opt(TYPES,type)+'</select></label><label>Název (nepovinné)<input data-k="name" maxlength="40" placeholder="Např. koupelna nahoře"></label></div>'+
+   '<div class="g3"><label>Délka podlahy (m)<input data-k="L" inputmode="decimal" placeholder="3,2"></label><label>Šířka podlahy (m)<input data-k="W" inputmode="decimal" placeholder="2,0"></label><label>Formát obkladu / dlažby<select data-k="format">'+opt(FORMATS,'nevim')+'</select></label></div>'+
+   '<div class="opts">'+
+   chk('floor','Dlažba na podlahu',true)+
+   chk('walls','Obklad stěn',type==='koupelna'||type==='wc')+
+   '<div class="sub" data-sub="walls"><label>Obvod obkládaných stěn (m)<input data-k="wallLen" inputmode="decimal" placeholder="např. 10"></label><label>Výška obkladu (m)<input data-k="wallH" inputmode="decimal" placeholder="2,0"></label></div>'+
+   chk('shower','Sprchový kout se spádem do žlabu nebo vpusti',false)+
+   '<div class="sub" data-sub="shower"><label>Rozměr sprchy – délka (cm)<input data-k="showerL" inputmode="numeric" placeholder="90"></label><label>Rozměr sprchy – šířka (cm)<input data-k="showerW" inputmode="numeric" placeholder="90"></label></div>'+
+   chk('waterproof','Hydroizolace (koupelna, sprcha, mokrý provoz)',type==='koupelna')+
+   chk('level','Nerovný podklad, bude potřeba vyrovnat (nivelace)',false)+
+   chk('remove','Je nutné odstranit starý obklad nebo dlažbu',false)+
+   chk('sokl','Sokl z dlažby',false)+
+   chk('underfloor','Podlahové topení',false)+
+   '</div>';
+  roomsBox.appendChild(d);
+  d.querySelector('.rm').addEventListener('click',function(){roomsBox.removeChild(d);renum()});
+  Array.prototype.forEach.call(d.querySelectorAll('input[type=checkbox]'),function(c){c.addEventListener('change',function(){sub(d)})});
+  sub(d); renum();
+ }
+ function sub(d){['walls','shower'].forEach(function(k){var c=d.querySelector('[data-k='+k+']'),b=d.querySelector('[data-sub='+k+']');if(c&&b)b.classList.toggle('on',c.checked)})}
+ function renum(){Array.prototype.forEach.call(roomsBox.children,function(d,i){d.querySelector('b').textContent='Místnost '+(i+1)});addBtn.style.display=roomsBox.children.length>=8?'none':''}
+ addBtn.addEventListener('click',function(){addRoom('koupelna')});
+ addRoom('koupelna');
+ function n(v){var x=parseFloat(String(v).replace(',','.'));return isFinite(x)&&x>0?x:0}
+ function readRooms(){
+  var out=[],bad='';
+  Array.prototype.forEach.call(roomsBox.children,function(d,i){
+   var g=function(k){var e=d.querySelector('[data-k='+k+']');return e?(e.type==='checkbox'?e.checked:e.value):''};
+   var r={type:g('type'),name:g('name').trim(),format:g('format'),floor:g('floor'),walls:g('walls'),shower:g('shower'),waterproof:g('waterproof'),level:g('level'),remove:g('remove'),sokl:g('sokl'),underfloor:g('underfloor'),
+    L:n(g('L')),W:n(g('W')),wallLen:n(g('wallLen')),wallH:n(g('wallH')),showerL:n(g('showerL')),showerW:n(g('showerW'))};
+   if(!r.floor&&!r.walls){bad='U místnosti '+(i+1)+' zaškrtněte dlažbu nebo obklad, nebo místnost odeberte.';return}
+   if(r.floor&&!(r.L&&r.W)){bad='U místnosti '+(i+1)+' vyplňte délku a šířku podlahy.';return}
+   if(r.walls&&!(r.wallLen&&r.wallH)){ if(r.L&&r.W&&!r.wallLen) r.wallLen=2*(r.L+r.W); if(!r.wallH) r.wallH=2; if(!(r.wallLen&&r.wallH)){bad='U místnosti '+(i+1)+' vyplňte obvod a výšku obkladu.';return} }
+   if(r.shower&&!(r.showerL&&r.showerW)){r.showerL=r.showerL||90;r.showerW=r.showerW||r.showerL}
+   out.push(r);
+  });
+  return {rooms:out,error:bad};
+ }
  function say(msg,err){st.textContent=msg;st.className='fs'+(err?' err':'')}
  async function shrink(f){
   if(!f.type||f.type.indexOf('image/')!==0) return f;
@@ -268,6 +335,9 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
   if(!e.name.value.trim()){say('Vyplňte prosím jméno.',1);e.name.focus();return}
   if(e.phone.value.replace(/\D/g,'').length<7){say('Zadejte prosím platný telefon.',1);e.phone.focus();return}
   if(!e.consent.checked){say('Potvrďte prosím souhlas se zpracováním údajů.',1);e.consent.focus();return}
+  var rr=readRooms(); if(rr.error){say(rr.error,1);return}
+  e.rooms.value=JSON.stringify(rr.rooms);
+  e.work_type.value=rr.rooms.some(function(r){return r.type==='koupelna'})?'Koupelna':(rr.rooms.some(function(r){return r.walls})&&rr.rooms.some(function(r){return r.floor})?'Jiné':(rr.rooms.some(function(r){return r.walls})?'Obklad':(rr.rooms.length?'Dlažba':'Jiné')));
   var files=Array.prototype.slice.call(e.photos.files);
   if(files.length>6){say('Nahrát lze nejvýše 6 souborů.',1);return}
   btn.disabled=true; say(files.length?'Zmenšuji a odesílám fotografie…':'Odesílám…');
@@ -278,7 +348,7 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
    var res=await fetch(API,{method:'POST',body:fd,signal:ctl.signal}); clearTimeout(to);
    var data={}; try{data=await res.json()}catch(_){}
    if(res.ok&&data.ok){
-    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, objednávku nabídky jsme přijali.</h3><p>Do dvou pracovních dnů se vám ozveme s platebními údaji k poplatku. Po jeho uhrazení s vámi domluvíme termín zahájení podle připravenosti stavby a zpracujeme nabídku.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
+    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, poptávku jsme přijali.</h3><p>Orientační cenu vám připravíme a pošleme e-mailem nebo se ozveme telefonicky, obvykle do dvou pracovních dnů.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
     return;
    }
    say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);
