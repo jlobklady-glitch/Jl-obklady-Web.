@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /balicek.html
+
+Sitemap: https://jl-obklady-web.jlobklady.workers.dev/sitemap.xml
