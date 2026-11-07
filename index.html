@@ -39,10 +39,24 @@ nav a{text-decoration:none;color:var(--stone)}nav a:hover{color:#fff}
 .floor i:nth-child(3n){background:linear-gradient(145deg,#2f2e2d,#232221)}
 @keyframes lay{to{opacity:1}}
 .hero .wrap{position:relative}
-.hero h1{font-size:clamp(44px,8.4vw,108px);max-width:11ch}
+.hero h1{font-size:clamp(38px,6.6vw,86px);max-width:16ch}
 .hero p{margin:26px 0 34px;font-size:clamp(18px,2vw,21px);color:var(--stone)}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .dim{position:absolute;right:20px;bottom:-40px;font:500 13px var(--b);color:var(--mut);display:none}
+.trust{margin:16px 0 0;font-size:15px;color:var(--mut)}
+.trust b{color:var(--porc);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:56px;padding-top:26px;border-top:1px solid var(--joint)}
+.stats div{border-left:2px solid var(--brass);padding-left:16px}
+.stats .n{display:block;font:700 clamp(40px,6vw,72px)/1 var(--h);font-stretch:118%;color:var(--porc);font-variant-numeric:tabular-nums}
+.stats .n i{font-style:normal;color:var(--brass)}
+.stats .t{display:block;margin-top:6px;font-size:15px;color:var(--stone)}
+@media(max-width:560px){.stats{grid-template-columns:1fr;gap:18px}}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:44px}
+.feat div{border:1px solid var(--joint);background:var(--slab);padding:22px}
+.feat h3{font-size:clamp(20px,2.2vw,26px);margin-bottom:12px}
+.feat ul{list-style:none;padding:0;display:grid;gap:7px;color:var(--stone);font-size:16px}
+.feat li{position:relative;padding-left:18px}
+.feat li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;background:var(--brass)}
 .facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:60px;padding-top:22px;border-top:1px solid var(--joint);color:var(--stone);font-size:15px}
 .facts span::before{content:"";display:inline-block;width:8px;height:8px;background:var(--brass);margin-right:10px}
 
@@ -138,29 +152,52 @@ label.check input{width:auto;margin-top:5px;flex:none}
 <body>
 <header><div class="wrap">
  <a class="logo" href="#">JL<b>-</b>OBKLADY</a>
- <nav><a href="#sluzby">Služby</a><a href="#realizace">Realizace</a><a href="#jolly">Jolly rohy</a><a href="#postup">Postup</a><a href="#poptavka" class="btn">Nezávazná poptávka</a></nav>
+ <nav><a href="#sluzby">Služby</a><a href="#prednosti">Přednosti</a><a href="#realizace">Realizace</a><a href="#jolly">Jolly rohy</a><a href="#postup">Postup</a><a href="#poptavka" class="btn">Nezávazná poptávka</a></nav>
 </div></header>
 
 <main>
 <div class="hero">
  <div class="floor" aria-hidden="true" id="floor"></div>
  <div class="wrap">
-  <h1>Precizní obklady. Dokonalý detail.</h1>
-  <p>Koupelny, dlažby a velkoformáty ve východních Čechách a okolí. Každou spáru, roh a niku řešíme tak, aby vydržely a vypadaly čistě i po letech.</p>
-  <div class="cta"><a class="btn" href="#poptavka">Nezávazná poptávka</a><a class="btn ghost" href="#realizace">Prohlédnout realizace</a></div>
-  <div class="facts"><span>Zaměření a konzultace</span><span>Hydroizolace dle systému Mapei</span><span>Jolly a kamenické rohy</span><span>Fixní cenová nabídka</span></div>
+  <h1>Koupelna, která vypadá jako z časopisu. A vydrží.</h1>
+  <p>Děláme kvalitní práci a na každém detailu nám záleží. Jsme dva obkladači a na zakázky jezdíme vždy ve dvou. Na vše najdeme funkční řešení.</p>
+  <div class="cta"><a class="btn" href="#poptavka">Chci koupelnu bez kompromisů</a><a class="btn ghost" href="#realizace">Prohlédnout realizace</a></div>
+  <p class="trust"><b>Přes 100 realizací. Vaše bude ta další.</b> Nezávazná poptávka je zdarma.</p>
+  <div class="stats" id="stats">
+   <div><span class="n"><span data-to="15">15</span><i>+</i></span><span class="t">let zkušeností</span></div>
+   <div><span class="n"><span data-to="100">100</span><i>+</i></span><span class="t">hotových realizací</span></div>
+   <div><span class="n" style="font-size:clamp(22px,3vw,34px);line-height:1.15">Pravidelně</span><span class="t">jezdíme na školení</span></div>
+  </div>
+  <div class="facts" style="margin-top:34px"><span>Zaměření a konzultace</span><span>Hydroizolace dle systému Mapei</span><span>Jolly a kamenické rohy</span><span>Fixní cenová nabídka</span></div>
  </div>
 </div>
 
 <section id="sluzby"><div class="wrap">
  <h2>Co pro vás uděláme</h2>
- <p class="lead">Od jedné stěny po celou koupelnu. Připravíme podklad, položíme, zaspárujeme a předáme s protokolem.</p>
+ <p class="lead">Od jedné stěny po celou koupelnu. Připravíme podklad, položíme, zaspárujeme a předáme s protokolem. Pokládáme všechny formáty, od mozaiky až po ty největší.</p>
  <div class="rows">
-  <div class="row"><h3>Obklady a dlažby</h3><p>Pokládka na stěny i podlahy, včetně přípravy podkladu, nivelace a penetrace. Standardní i nadstandardní formáty.</p></div>
+  <div class="row"><h3>Obklady a dlažby</h3><p>Obklady na stěnách a dlažby ve všech prostorách, včetně přípravy podkladu, nivelace a penetrace. Všechny formáty, od mozaiky až po největší desky.</p></div>
+  <div class="row"><h3>Schodiště</h3><p>Obklad a dlažba schodišť, včetně hran a nástupních ploch.</p></div>
+  <div class="row"><h3>Rekonstrukce velkých ploch</h3><p>Realizujeme i rekonstrukce rozsáhlých ploch, ne jen jednotlivé místnosti.</p></div>
   <div class="row"><h3>Koupelny na klíč</h3><p>Spádování sprchového koutu, hydroizolace, žlaby a odtoky, niky, obklady až po zaspárování a silikony.</p></div>
-  <div class="row"><h3>Velkoformátové desky</h3><p>Desky do 120×280 cm a větší, včetně výřezů a speciálního lepení. Na zakázky jezdíme vždy ve dvou.</p></div>
+  <div class="row"><h3>Velkoformátové desky</h3><p>Největší formáty včetně výřezů a speciálního lepení. Na zakázky jezdíme vždy ve dvou.</p></div>
   <div class="row"><h3>Hydroizolace a sprchové kouty</h3><p>Vodotěsná vrstva v koutech, prostupech i nikách, včetně přebandážování spojů.</p></div>
   <div class="row"><h3>Dekorativní stěrky</h3><p>Betonové a mikrocementové povrchy na stěnách a podlahách.</p></div>
+ </div>
+</div></section>
+
+<section id="prednosti"><div class="wrap">
+ <h2>Detaily, které jinde nenajdete</h2>
+ <p class="lead">Naší největší předností jsou skryté systémy a výrobky z obkladu. Žádný plast, který ruší vzhled, všechno ze stejného materiálu. Na vše najdeme funkční řešení.</p>
+ <div class="feat">
+  <div><h3>Skryté systémy z obkladu</h3><ul>
+   <li>WC tlačítka</li><li>Skryté háčky na ručníky</li><li>Držák na WC papír a štětku</li><li>Odtahy vlhkosti</li><li>Skrytý systém na papírové ubrousky</li></ul></div>
+  <div><h3>Revizní dvířka a úložný prostor</h3><ul>
+   <li>Revizní dvířka u vany</li><li>Revizní dvířka na podlahové topení</li><li>Skrytá skříňka s úložným prostorem</li></ul></div>
+  <div><h3>Umyvadla a niky</h3><ul>
+   <li>Umyvadla z obkladu</li><li>Poličky do niky z obkladu</li><li>Podsvícení niky a poliček</li></ul></div>
+  <div><h3>Výrobky z obkladu</h3><ul>
+   <li>Dávkovač na mýdlo</li><li>Květináč</li><li>Držák na kartáčky a zubní pastu</li><li>Kryt na papírové ubrousky</li><li>a další podle vašeho přání</li></ul></div>
  </div>
 </div></section>
 
@@ -369,6 +406,16 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
   }
   btn.disabled=false;
  });
+})();
+
+(function(){var box=document.getElementById('stats');if(!box)return;var els=box.querySelectorAll('[data-to]');
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if(reduce||!('IntersectionObserver' in window))return;
+ els.forEach(function(e){e.textContent='0'});
+ function run(){els.forEach(function(e){var to=+e.getAttribute('data-to'),t0=null,dur=1700;
+  function step(t){if(t0===null)t0=t;var k=Math.min((t-t0)/dur,1),v=1-Math.pow(1-k,3);e.textContent=Math.round(to*v);if(k<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step)})}
+ var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){io.disconnect();run()}},{threshold:.4});io.observe(box);
 })();
 </script>
 </body></html>
