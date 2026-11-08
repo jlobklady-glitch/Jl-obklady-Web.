@@ -325,6 +325,7 @@ label.check input{width:auto;margin-top:5px;flex:none}
   <label>Poznámka<textarea name="description" maxlength="4000" placeholder="Např. materiál už máte, jaký chcete vzhled, co je potřeba vědět o stavbě"></textarea></label>
   <label>Fotografie nebo plánek <span class="small">(až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
   <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem zpracování orientační nabídky.</span></label>
+  <div id="ts" class="ts"></div>
   <button class="btn" type="submit">Odeslat nezávaznou poptávku</button>
   <p id="fs" class="fs" role="status" aria-live="polite"></p>
   <p class="small">Údaje použijeme jen k vyřízení poptávky.</p>
@@ -412,6 +413,9 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
    return b?new File([b],f.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'}):f;
   }catch(e){return f}
  }
+ /* Cloudflare Turnstile: vyplňte veřejný site key a ochrana se zapne (jinak je vypnutá) */
+ var TS_SITE_KEY='';
+ if(TS_SITE_KEY){var ts=document.createElement('script');ts.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';ts.async=true;ts.onload=function(){window.turnstile&&window.turnstile.render('#ts',{sitekey:TS_SITE_KEY,language:'cs'})};document.head.appendChild(ts)}
  form.addEventListener('submit',async function(ev){
   ev.preventDefault();
   var e=form.elements;
