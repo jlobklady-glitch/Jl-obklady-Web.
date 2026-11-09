@@ -41,7 +41,7 @@ nav a{text-decoration:none;color:var(--stone)}nav a:hover{color:#fff}
 @media(max-width:760px){nav a:not(.btn){display:none}}
 
 /* hero: podlaha z dlaždic s vyznačenými spárami */
-.hero{position:relative;overflow:hidden;padding:clamp(70px,12vw,150px) 0 clamp(60px,9vw,110px)}
+.hero{position:relative;overflow:hidden;padding:clamp(56px,9vw,120px) 0 clamp(44px,6vw,80px)}
 .floor{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-auto-rows:1fr;gap:3px;background:var(--joint);opacity:.55;
  -webkit-mask-image:linear-gradient(100deg,transparent 18%,#000 75%);mask-image:linear-gradient(100deg,transparent 18%,#000 75%)}
 .floor i{background:linear-gradient(145deg,#2a2b2f,#202125);opacity:0;animation:lay .5s ease-out forwards}
@@ -164,12 +164,24 @@ label.check input{width:auto;margin-top:5px;flex:none}
 .call-menu a{color:var(--porc);text-decoration:none;font:600 16px var(--b);padding:12px 14px;border:1px solid var(--joint);border-radius:2px;display:block}
 .call-menu a small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}
 @media(min-width:761px){.call{display:none}}
-.call.hide{display:none}
 @media(prefers-reduced-motion:reduce){.floor i{animation:none;opacity:1}html{scroll-behavior:auto}}
 
-.stavba{position:relative;height:calc(100svh - 64px);min-height:560px;max-height:980px;background:var(--ink);border-bottom:1px solid var(--joint)}
+.stav-head{padding-bottom:28px}
+.stav-head .kick{font:600 clamp(16px,2vw,20px) var(--h);font-stretch:108%;color:var(--brass);margin:0 0 12px}
+.stavba{position:relative;height:min(82svh,820px);min-height:520px;background:var(--ink);border-top:1px solid var(--joint);border-bottom:1px solid var(--joint)}
 .stavba iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:var(--ink)}
+.stavba .poster{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;background:radial-gradient(90% 80% at 50% 40%,var(--slab),var(--ink))}
+.stavba .poster p{margin:0;color:var(--stone);max-width:34ch}
+.stavba.on .poster{display:none}
+.steps3d{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:0;counter-reset:st}
+.steps3d li{counter-increment:st;border:1px solid var(--joint);margin:0 -1px -1px 0;padding:18px 18px 20px;background:var(--slab)}
+.steps3d li::before{content:counter(st,decimal-leading-zero);display:block;font:700 20px var(--h);color:var(--brass);margin-bottom:6px}
+.steps3d b{display:block;font:600 18px var(--h);font-stretch:108%;color:var(--porc);margin-bottom:6px}
+.steps3d span{display:block;font-size:15px;color:var(--stone);line-height:1.55}
+.hero .more{margin:22px 0 -6px;font-size:16px}
+.hero .more a{color:var(--brass);text-underline-offset:4px}
 @media (max-width:700px){.stavba{height:calc(100svh - 64px);min-height:520px}}
+.call.hide{display:none}
 </style>
 </head>
 <body>
@@ -179,15 +191,13 @@ label.check input{width:auto;margin-top:5px;flex:none}
 </div></header>
 
 <main>
-<section class="stavba" aria-label="Animace stavby koupelny ve 3D">
- <iframe src="stavba/" title="3D postup stavby koupelny od podkladu po předání" allow="fullscreen" loading="eager"></iframe>
-</section>
 <div class="hero">
  <div class="floor" aria-hidden="true" id="floor"></div>
  <div class="wrap">
   <h1>Koupelna, která vypadá jako z časopisu. A vydrží.</h1>
   <p>Děláme kvalitní práci a na každém detailu nám záleží. Jsme dva obkladači a na zakázky jezdíme vždy ve dvou. Na vše najdeme funkční řešení.</p>
   <div class="cta"><a class="btn" href="#poptavka">Chci koupelnu bez kompromisů</a><a class="btn ghost" href="#realizace">Prohlédnout realizace</a></div>
+  <p class="more"><a href="#stavba">Podívejte se, jak koupelnu stavíme, ve 3D</a></p>
   <p class="trust"><b>Přes 100 realizací. Vaše bude ta další.</b> Nezávazná poptávka je zdarma.</p>
   <div class="stats" id="stats">
    <div><span class="n"><span data-to="15">15</span><i>+</i></span><span class="t">let zkušeností</span></div>
@@ -197,6 +207,31 @@ label.check input{width:auto;margin-top:5px;flex:none}
   <div class="facts" style="margin-top:34px"><span>Zaměření a konzultace</span><span>Hydroizolace dle systému Mapei</span><span>Jolly a kamenické rohy</span><span>Fixní cenová nabídka</span></div>
  </div>
 </div>
+
+<section id="stavba" aria-labelledby="stavba-h"><div class="wrap stav-head">
+ <p class="kick">3D postup stavby</p>
+ <h2 id="stavba-h">Jak stavíme koupelnu krok za krokem</h2>
+ <p class="lead">Od přípravy podkladu po předání. Spusťte animaci nebo si klikněte na jednotlivé kroky. U každého uvidíte, co přesně děláme a proč na pořadí záleží.</p>
+</div>
+<div class="stavba" id="stavbaBox">
+ <iframe id="stavbaFrame" data-src="stavba/" title="3D postup stavby koupelny od podkladu po předání" allow="fullscreen"></iframe>
+ <div class="poster"><p>Interaktivní 3D animace, která ukazuje celou stavbu koupelny.</p><button type="button" class="btn" id="stavbaGo">Spustit 3D animaci</button><noscript><p>Pro animaci je potřeba JavaScript. Postup najdete v seznamu níže.</p></noscript></div>
+</div>
+<div class="wrap">
+ <ol class="steps3d" aria-label="Postup stavby koupelny">
+  <li><b>Příprava podkladu</b><span>Laserem a latí zkontrolujeme rovinnost stěn i podlahy, nerovnosti přebrousíme a celý podklad napenetrujeme.</span></li>
+  <li><b>Betonování sprchového koutu</b><span>Osadíme odtokový žlab přesně do výšky budoucí dlažby a sprchový kout vybetonujeme se spádem k odtoku. Voda nikde nezůstane stát.</span></li>
+  <li><b>Hydroizolace: rohy a prostupy</b><span>Nejslabší místa zesílíme jako první. Do rohů a styků stěny s podlahou vlepíme těsnicí pásky, na vývody manžety a kolem žlabu límec.</span></li>
+  <li><b>Hydroizolace podlahy a stěn</b><span>Podle koupelny volíme ze dvou systémů. Oba s pásky v rozích tvoří souvislou vodotěsnou vrstvu.</span></li>
+  <li><b>Pokládka dlažby metodou butterfly</b><span>Lepidlo naneseme zubovou stěrkou na podklad i na rub dlaždice. Velký formát tak leží v plném lůžku, bez dutin.</span></li>
+  <li><b>Obklad velkoformátem</b><span>Světlé desky 60 × 120 lepíme stejnou metodou. Kresba pokračuje do niky s poličkami z obkladu i na dvířka skryté skříňky nad WC.</span></li>
+  <li><b>Roh předstěny: lišta, nebo Jolly</b><span>Vnější roh můžeme ukončit lištou, nebo ho seříznout pod 45° jako kamenický Jolly roh. Spáru pak vyplníme epoxidem v barvě obkladu.</span></li>
+  <li><b>Spárování</b><span>Spáry vyplníme gumovým hladítkem. Vyberte si cementovou spárovačku, nebo epoxidovou, která nenasákává a odolá skvrnám.</span></li>
+  <li><b>Finální umytí</b><span>Zbytky spárovačky smyjeme, obklad vyleštíme a kouty vytmelíme sanitárním silikonem. Povrch dostane svůj lesk.</span></li>
+  <li><b>Tlačítko WC z obkladu</b><span>Z obkladu vyřežeme jen samotná tlačítka, ne celý modul. Kresba kamene na nich plynule pokračuje. Hranatá úzká, široká, nebo kulatá prořezaná do sebe.</span></li>
+  <li><b>Předání klientovi</b><span>Osadíme sprchu, zástěnu, vanu a WC a koupelnu předáme s předávacím protokolem a zárukou. Teď si ji můžete prohlédnout sami.</span></li>
+ </ol>
+</div></section>
 
 <section id="hydroizolace" class="hyd"><div class="wrap">
  <h2>Co je pod obkladem, rozhoduje o všem.</h2>
@@ -466,8 +501,17 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
 })();
 </script>
 <script>
-/* Tlačítko Zavolat by na mobilu zakrývalo ovládání 3D animace, proto se při jejím zobrazení schová. */
-(function(){var s=document.querySelector('.stavba'),c=document.getElementById('call');if(!s||!c||!('IntersectionObserver'in window))return;
-new IntersectionObserver(function(e){c.classList.toggle('hide',e[0].intersectionRatio>0.5)},{threshold:[0,.5,1]}).observe(s)})();
+/* 3D animace se načte až při posunu k ní (na mobilu až po klepnutí), aby úvod stránky zůstal rychlý. */
+(function(){
+ var box=document.getElementById('stavbaBox'),f=document.getElementById('stavbaFrame'),go=document.getElementById('stavbaGo'),c=document.getElementById('call');
+ if(!box||!f)return;
+ function load(){if(!f.getAttribute('src')){f.setAttribute('src',f.getAttribute('data-src'))}box.classList.add('on')}
+ if(go)go.addEventListener('click',load);
+ var small=window.matchMedia&&matchMedia('(max-width:760px)').matches,save=navigator.connection&&navigator.connection.saveData;
+ if('IntersectionObserver' in window){
+  if(!small&&!save){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){load();o.disconnect()}},{rootMargin:'300px'});o.observe(box)}
+  if(c)new IntersectionObserver(function(e){c.classList.toggle('hide',e[0].intersectionRatio>0.5)},{threshold:[0,.5,1]}).observe(box);
+ }else if(!small&&!save){load()}
+})();
 </script>
 </body></html>
