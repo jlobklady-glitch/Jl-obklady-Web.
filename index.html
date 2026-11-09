@@ -164,7 +164,12 @@ label.check input{width:auto;margin-top:5px;flex:none}
 .call-menu a{color:var(--porc);text-decoration:none;font:600 16px var(--b);padding:12px 14px;border:1px solid var(--joint);border-radius:2px;display:block}
 .call-menu a small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}
 @media(min-width:761px){.call{display:none}}
+.call.hide{display:none}
 @media(prefers-reduced-motion:reduce){.floor i{animation:none;opacity:1}html{scroll-behavior:auto}}
+
+.stavba{position:relative;height:calc(100svh - 64px);min-height:560px;max-height:980px;background:var(--ink);border-bottom:1px solid var(--joint)}
+.stavba iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:var(--ink)}
+@media (max-width:700px){.stavba{height:calc(100svh - 64px);min-height:520px}}
 </style>
 </head>
 <body>
@@ -174,6 +179,9 @@ label.check input{width:auto;margin-top:5px;flex:none}
 </div></header>
 
 <main>
+<section class="stavba" aria-label="Animace stavby koupelny ve 3D">
+ <iframe src="stavba/" title="3D postup stavby koupelny od podkladu po předání" allow="fullscreen" loading="eager"></iframe>
+</section>
 <div class="hero">
  <div class="floor" aria-hidden="true" id="floor"></div>
  <div class="wrap">
@@ -456,5 +464,10 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
   requestAnimationFrame(step)})}
  var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){io.disconnect();run()}},{threshold:.4});io.observe(box);
 })();
+</script>
+<script>
+/* Tlačítko Zavolat by na mobilu zakrývalo ovládání 3D animace, proto se při jejím zobrazení schová. */
+(function(){var s=document.querySelector('.stavba'),c=document.getElementById('call');if(!s||!c||!('IntersectionObserver'in window))return;
+new IntersectionObserver(function(e){c.classList.toggle('hide',e[0].intersectionRatio>0.5)},{threshold:[0,.5,1]}).observe(s)})();
 </script>
 </body></html>
