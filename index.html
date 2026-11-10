@@ -505,7 +505,7 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
 })();
 </script>
 <script>
-/* 3D animace se načte až při posunu k ní (na mobilu až po klepnutí), aby úvod stránky zůstal rychlý. */
+/* 3D animace se načte až při posunu k ní (spustí se sama), aby úvod stránky zůstal rychlý. */
 (function(){
  var box=document.getElementById('stavbaBox'),f=document.getElementById('stavbaFrame'),go=document.getElementById('stavbaGo'),c=document.getElementById('call');
  if(!box||!f)return;
@@ -513,9 +513,9 @@ const f=document.getElementById('floor');for(let i=0;i<64;i++){const t=document.
  if(go)go.addEventListener('click',load);
  var small=window.matchMedia&&matchMedia('(max-width:760px)').matches,save=navigator.connection&&navigator.connection.saveData;
  if('IntersectionObserver' in window){
-  if(!small&&!save){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){load();o.disconnect()}},{rootMargin:'300px'});o.observe(box)}
+  if(!save){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){load();o.disconnect()}},{rootMargin:'300px'});o.observe(box)}
   if(c)new IntersectionObserver(function(e){c.classList.toggle('hide',e[0].intersectionRatio>0.5)},{threshold:[0,.5,1]}).observe(box);
- }else if(!small&&!save){load()}
+ }else if(!save){load()}
 })();
 </script>
 </body></html>
