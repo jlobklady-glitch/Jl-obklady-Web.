@@ -59,7 +59,7 @@
 </div>
 </main>
 <footer><div class="wrap"><span>JL-OBKLADY · Obklady, dlažby, koupelny, dekorativní stěrky</span><nav aria-label="Odkazy"><a href="/3d-stavba/">3D stavba</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/#poptavka">Poptávka</a></nav></div></footer>
-<div class="bar" id="bar"><div class="barcall" id="barCall"><div class="call-menu"><a href="tel:+420725967231">Lukáš<small>+420 725 967 231</small></a><a href="tel:+420732523129">Honza<small>+420 732 523 129</small></a></div><button type="button" class="btn ghost" id="callBtn" aria-expanded="false">Zavolat</button></div><a class="btn" href="/#poptavka">Nezávazná poptávka</a></div>
+<div class="call" id="call"><div class="call-menu" id="callMenu"><a href="tel:+420725967231">Lukáš<small>+420 725 967 231</small></a><a href="tel:+420732523129">Honza<small>+420 732 523 129</small></a></div><button type="button" class="btn" id="callBtn" aria-expanded="false" aria-controls="callMenu">Zavolat</button></div>
 <script src="/assets/site.js" defer></script>
 <script>
 (function(){
@@ -69,6 +69,7 @@
  var save=navigator.connection&&navigator.connection.saveData;
  if('IntersectionObserver' in window){ if(!save){var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){load();o.disconnect()}},{rootMargin:'200px'});o.observe(box)} }
  else if(!save){load()}
+ var c=document.getElementById('call');if(c&&'IntersectionObserver' in window)new IntersectionObserver(function(e){c.classList.toggle('hide',e[0].intersectionRatio>0.5)},{threshold:[0,.5,1]}).observe(box);
  var d=document.getElementById('stepsD'); if(d&&window.matchMedia&&matchMedia('(min-width:761px)').matches)d.open=true;
 })();
 </script>

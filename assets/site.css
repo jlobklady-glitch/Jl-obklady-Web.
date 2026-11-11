@@ -156,13 +156,6 @@ label.check input{width:auto;margin-top:5px;flex:none}
 .hero .more a{color:var(--brass);text-underline-offset:4px}
 
 /* menu */
-.call-menu{display:none;flex-direction:column;gap:6px;background:var(--slab);border:1px solid var(--brass);border-radius:2px;padding:8px;min-width:210px}
-.call-menu a{color:var(--porc);text-decoration:none;font:600 16px var(--b);padding:12px 14px;border:1px solid var(--joint);border-radius:2px;display:block}
-.call-menu a small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}
-.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:1px solid var(--joint);color:var(--porc);border-radius:2px;cursor:pointer}
-.burger svg{width:22px;height:22px}
-header.open .burger .l1{transform:translateY(5px) rotate(45deg)}header.open .burger .l2{opacity:0}header.open .burger .l3{transform:translateY(-5px) rotate(-45deg)}
-.burger path{transition:transform .2s,opacity .2s;transform-origin:center;transform-box:fill-box}
 nav a[aria-current=page]{color:#fff;border-bottom:1px solid var(--brass)}
 section[id],div[id=poptavka]{scroll-margin-top:70px}
 @media(max-width:860px){nav{gap:16px;font-size:14px}}
@@ -174,17 +167,13 @@ section[id],div[id=poptavka]{scroll-margin-top:70px}
  nav a[aria-current=page]{border-bottom:0;border-left:3px solid var(--brass);color:#fff}
  nav a.btn{margin:16px 20px 20px;text-align:center;border-top:1px solid var(--brass)}
 }
-/* spodní lišta na mobilu */
-.bar{display:none}
-@media(max-width:760px){
- body{padding-bottom:68px}
- .bar{display:grid;grid-template-columns:1fr 1.5fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:7;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(23,24,26,.96);backdrop-filter:blur(8px);border-top:1px solid var(--joint)}
- .bar .btn{padding:14px 10px;text-align:center;font-size:16px;line-height:1.2}
- .bar .barcall{position:relative}
- .bar .barcall .btn{width:100%}
- .bar .call-menu{position:absolute;left:0;bottom:calc(100% + 10px);min-width:230px}
- .bar .barcall.open .call-menu{display:flex}
-}
+.call{position:fixed;right:14px;bottom:14px;z-index:6;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.call-menu{display:none;flex-direction:column;gap:6px;background:var(--slab);border:1px solid var(--brass);border-radius:2px;padding:8px;min-width:210px}
+.call.open .call-menu{display:flex}
+.call-menu a{color:var(--porc);text-decoration:none;font:600 16px var(--b);padding:12px 14px;border:1px solid var(--joint);border-radius:2px;display:block}
+.call-menu a small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}
+.call.hide{display:none}
+@media(min-width:761px){.call{display:none}}
 /* rozcestník na hlavní stránce */
 .tease{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,56px);align-items:center}
 .tease img{display:block;width:100%;height:auto;border:1px solid var(--joint);background:var(--slab)}
@@ -206,7 +195,7 @@ details.steps-d .steps3d{margin:0;padding:0 0 1px 0;border-top:1px solid var(--j
 .cta-band{margin-top:44px;padding:28px;border:1px solid var(--brass);display:flex;gap:18px 30px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .cta-band p{margin:0;font:600 clamp(20px,2.6vw,28px) var(--h);font-stretch:108%;max-width:28ch}
 .stavba.page{height:min(86svh,900px)}
-@media(max-width:760px){.stavba.page{height:calc(100svh - 64px - 68px);min-height:480px}}
+@media(max-width:760px){.stavba.page{height:calc(100svh - 64px);min-height:480px}}
 footer nav{display:flex;gap:6px 22px;flex-wrap:wrap;font-size:15px}
 footer nav a{color:var(--mut)}
 @media(max-width:760px){footer nav{position:static;display:flex;flex-direction:row;background:none;box-shadow:none;font-size:15px}footer nav a{padding:0;border:0}}
