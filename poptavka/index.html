@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Nezávazná poptávka koupelny a obkladů | JL-OBKLADY</title>
+<title>Nezávazná poptávka koupelny a obkladů | JL Obklady</title>
 <meta name="description" content="Napište nám, co plánujete, a zadejte rozměry. Orientační cenu koupelny, obkladů nebo dlažby vám připravíme zdarma a nezávazně. JL-OBKLADY, východní Čechy.">
 <link rel="canonical" href="https://jl-obklady-web.jlobklady.workers.dev/poptavka/">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website"><meta property="og:locale" content="cs_CZ"><meta property="og:site_name" content="JL-OBKLADY">
+<meta property="og:type" content="website"><meta property="og:locale" content="cs_CZ"><meta property="og:site_name" content="JL Obklady | Tile & Style">
 <meta property="og:title" content="Nezávazná poptávka"><meta property="og:description" content="Napište nám, co plánujete, a zadejte rozměry. Orientační cenu koupelny, obkladů nebo dlažby vám připravíme zdarma a nezávazně. JL-OBKLADY, východní Čechy."><meta property="og:url" content="https://jl-obklady-web.jlobklady.workers.dev/poptavka/"><meta property="og:image" content="https://jl-obklady-web.jlobklady.workers.dev/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#17181a">
@@ -69,8 +69,8 @@
  </form>
 </div></section>
 </main>
-<footer><div class="wrap"><span>JL-OBKLADY · Obklady, dlažby, koupelny, dekorativní stěrky</span><nav aria-label="Odkazy"><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/poptavka/">Poptávka</a></nav></div></footer>
-<div class="call" id="call"><div class="call-menu" id="callMenu"><a href="tel:+420725967231">Lukáš<small>+420 725 967 231</small></a><a href="tel:+420732523129">Honza<small>+420 732 523 129</small></a></div><button type="button" class="btn" id="callBtn" aria-expanded="false" aria-controls="callMenu">Zavolat</button></div>
+<footer><div class="wrap"><span>JL Obklady | Tile & Style · Obklady, dlažby, koupelny, dekorativní stěrky</span><nav aria-label="Odkazy"><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/poptavka/">Poptávka</a></nav></div></footer>
+<div class="call" id="call"><div class="call-menu" id="callMenu"><a href="tel:+420725967231">Lukáš<small>+420 725 967 231</small></a><a href="tel:+420732523129">Honza<small>+420 732 523 129</small></a><a href="https://wa.me/420725967231" target="_blank" rel="noopener" data-track="whatsapp">WhatsApp<small>napsat zprávu</small></a></div><button type="button" class="btn" id="callBtn" aria-expanded="false" aria-controls="callMenu">Zavolat</button></div>
 <script src="/assets/site.js" defer></script>
 <script>
 (function(){
@@ -172,7 +172,7 @@
    var res=await fetch(API,{method:'POST',body:fd,signal:ctl.signal}); clearTimeout(to);
    var data={}; try{data=await res.json()}catch(_){}
    if(res.ok&&data.ok){
-    form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, poptávku jsme přijali.</h3><p>Orientační cenu vám připravíme a pošleme e-mailem nebo se ozveme telefonicky, obvykle do dvou pracovních dnů.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
+    window.jlTrack&&jlTrack('form_submit');form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, poptávku jsme přijali.</h3><p>Orientační cenu vám připravíme a pošleme e-mailem nebo se ozveme telefonicky, obvykle do dvou pracovních dnů.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
     return;
    }
    say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);

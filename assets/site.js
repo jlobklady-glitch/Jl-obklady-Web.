@@ -35,3 +35,11 @@
    requestAnimationFrame(tick)})(t0)}
  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();run()}},{threshold:.6});io.observe(b)}else run();
 })();
+
+/* Měření: události posílá do GA4 (gtag), GTM (dataLayer) nebo Plausible, pokud jsou na stránce vloženy. Jinak nedělá nic. */
+window.jlTrack=function(n,p){try{p=p||{};if(window.gtag)gtag('event',n,p);if(window.dataLayer&&!window.gtag)dataLayer.push(Object.assign({event:n},p));if(window.plausible)plausible(n,{props:p})}catch(e){}};
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+ if(h.indexOf('tel:')===0)jlTrack('phone_click',{number:h.slice(4)});
+ else if(h.indexOf('mailto:')===0)jlTrack('email_click');
+ else if(h.indexOf('wa.me')>-1)jlTrack('whatsapp_click');
+ else if(h.indexOf('/poptavka')===0)jlTrack('cta_poptavka',{page:location.pathname})},true);
