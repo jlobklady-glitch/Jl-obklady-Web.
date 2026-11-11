@@ -27,9 +27,11 @@
  r.addEventListener('input',function(){set(+r.value)});
  var ease=function(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2};
  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){set(50);busy=false;return}
- var t0=performance.now();hint.textContent='Sledujte rozdíl…';set(0);
- (function tick(t){var s=(t-t0)/1000;
-  if(s<.6)set(0);else if(s<3.6)set(100*ease((s-.6)/3));else if(s<4.4)set(100);else if(s<5.6)set(100-50*ease((s-4.4)/1.2));
-  else{set(50);busy=false;hint.textContent='Posuňte jezdec prstem nebo myší.';return}
-  requestAnimationFrame(tick)})(t0);
+ set(0);hint.textContent='Sledujte rozdíl…';
+ function run(){var t0=performance.now();
+  (function tick(t){var s=(t-t0)/1000;
+   if(s<.6)set(0);else if(s<3.6)set(100*ease((s-.6)/3));else if(s<4.4)set(100);else if(s<5.6)set(100-50*ease((s-4.4)/1.2));
+   else{set(50);busy=false;hint.textContent='Posuňte jezdec prstem nebo myší.';return}
+   requestAnimationFrame(tick)})(t0)}
+ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();run()}},{threshold:.6});io.observe(b)}else run();
 })();
