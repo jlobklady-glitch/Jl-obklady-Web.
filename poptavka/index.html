@@ -24,10 +24,11 @@
 </div></header>
 
 <main>
-<section style="padding-top:0"><div class="wrap two">
- <div>
-  <h1 style="font-size:clamp(30px,5vw,48px)">Nezávazná poptávka</h1>
-  <p class="lead">Napište nám, co plánujete, a zadejte rozměry. <b>Orientační cenu vám připravíme zdarma a nezávazně.</b></p>
+<section style="padding-top:0"><div class="wrap">
+ <h1 style="font-size:clamp(30px,5vw,48px);margin-top:28px">Nezávazná poptávka</h1>
+ <p class="lead">Stačí jméno a telefon, ozveme se vám. <b>Orientační cenu připravíme zdarma a nezávazně.</b></p>
+</div><div class="wrap two" style="margin-top:20px">
+ <div class="info">
   <div class="offer">
    <h3>Chcete přesný rozpočet? Balíček za <span data-fee>4 000 Kč</span></h3>
    <p class="credit"><b>Celá cena balíčku se vám na konci zakázky odečte z ceny.</b> Objednáte ho, až budete chtít jít dál, a tím si rezervujete termín.</p>
@@ -44,24 +45,27 @@
  </div>
  <form id="poptavka" novalidate>
   <div class="hp" aria-hidden="true"><label>Web<input name="website" tabindex="-1" autocomplete="off"></label></div>
-  <input type="hidden" name="t" value="">
   <div class="g2"><label>Jméno<input name="name" required maxlength="120" autocomplete="name"></label><label>Telefon<input name="phone" required type="tel" maxlength="40" autocomplete="tel"></label></div>
-  <div class="g2"><label>E-mail<input name="email" type="email" maxlength="200" autocomplete="email"></label><label>Místo realizace<input name="location" maxlength="200" placeholder="Obec" autocomplete="address-level2"></label></div>
-  <label>Termín<input name="timing" maxlength="120" placeholder="Např. jaro 2027"></label>
+  <div class="g2"><label>Místo realizace<input name="location" maxlength="200" placeholder="Obec" autocomplete="address-level2"></label><label>Co plánujete?<select name="plan"><option value="Koupelna">Koupelnu</option><option value="Obklad">Obklad stěn</option><option value="Dlažba">Dlažbu</option><option value="Jiné">Něco jiného</option></select></label></div>
+  <label>Pár slov k vaší představě <span class="small">(nepovinné)</span><textarea name="description" maxlength="4000" placeholder="Např. rekonstrukce panelákové koupelny, materiál už máte, chcete velkoformát"></textarea></label>
+  <label>E-mail <span class="small">(nepovinné, pošleme na něj nabídku)</span><input name="email" type="email" maxlength="200" autocomplete="email"></label>
+  <input type="hidden" name="t" value="">
   <input type="hidden" name="work_type" value="">
   <input type="hidden" name="rooms" value="">
-  <fieldset class="rooms"><legend>Místnosti a rozměry</legend>
-   <p class="small">Pro orientační cenu přidejte každou místnost, kde se bude obkládat nebo dlaždit. Rozměry stačí přibližné.</p>
-   <div id="rooms"></div>
-   <button class="btn ghost" type="button" id="addRoom">+ Přidat místnost</button>
-  </fieldset>
-  <label>Poznámka<textarea name="description" maxlength="4000" placeholder="Např. materiál už máte, jaký chcete vzhled, co je potřeba vědět o stavbě"></textarea></label>
-  <label>Fotografie nebo plánek <span class="small">(až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
+  <details class="moreform" id="moreForm"><summary>Chci přesnější orientační cenu hned (rozměry, fotky, termín)</summary>
+   <label>Termín<input name="timing" maxlength="120" placeholder="Např. jaro 2027"></label>
+   <fieldset class="rooms"><legend>Místnosti a rozměry</legend>
+    <p class="small">Přidejte každou místnost, kde se bude obkládat nebo dlaždit. Rozměry stačí přibližné.</p>
+    <div id="rooms"></div>
+    <button class="btn ghost" type="button" id="addRoom">+ Přidat místnost</button>
+   </fieldset>
+   <label>Fotografie nebo plánek <span class="small">(až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
+  </details>
   <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem zpracování orientační nabídky.</span></label>
   <div id="ts" class="ts"></div>
-  <button class="btn" type="submit">Odeslat nezávaznou poptávku</button>
+  <button class="btn" type="submit">Chci nezávaznou nabídku</button>
   <p id="fs" class="fs" role="status" aria-live="polite"></p>
-  <p class="small">Údaje použijeme jen k vyřízení poptávky.</p>
+  <p class="small">Ozveme se obvykle do dvou pracovních dnů. Údaje použijeme jen k vyřízení poptávky.</p>
  </form>
 </div></section>
 </main>
@@ -114,7 +118,8 @@
  function sub(d){['walls','niche','shower','bath','waterproof'].forEach(function(k){var c=d.querySelector('[data-k='+k+']'),b=d.querySelector('[data-sub='+k+']');if(c&&b)b.classList.toggle('on',c.checked)})}
  function renum(){Array.prototype.forEach.call(roomsBox.children,function(d,i){d.querySelector('b').textContent='Místnost '+(i+1)});addBtn.style.display=roomsBox.children.length>=8?'none':''}
  addBtn.addEventListener('click',function(){addRoom('koupelna')});
- addRoom('koupelna');
+ var more=document.getElementById('moreForm');
+ more.addEventListener('toggle',function(){if(more.open&&!roomsBox.children.length)addRoom('koupelna')});
  function n(v){var x=parseFloat(String(v).replace(',','.'));return isFinite(x)&&x>0?x:0}
  function readRooms(){
   var out=[],bad='';
@@ -153,9 +158,10 @@
   if(!e.name.value.trim()){say('Vyplňte prosím jméno.',1);e.name.focus();return}
   if(e.phone.value.replace(/\D/g,'').length<7){say('Zadejte prosím platný telefon.',1);e.phone.focus();return}
   if(!e.consent.checked){say('Potvrďte prosím souhlas se zpracováním údajů.',1);e.consent.focus();return}
-  var rr=readRooms(); if(rr.error){say(rr.error,1);return}
+  var rr=more.open&&roomsBox.children.length?readRooms():{rooms:[],error:''}; if(rr.error){say(rr.error,1);return}
   e.rooms.value=JSON.stringify(rr.rooms);
   e.work_type.value=rr.rooms.some(function(r){return r.type==='koupelna'})?'Koupelna':(rr.rooms.some(function(r){return r.walls})&&rr.rooms.some(function(r){return r.floor})?'Jiné':(rr.rooms.some(function(r){return r.walls})?'Obklad':(rr.rooms.length?'Dlažba':'Jiné')));
+  if(!rr.rooms.length)e.work_type.value=e.plan.value;
   var files=Array.prototype.slice.call(e.photos.files);
   if(files.length>6){say('Nahrát lze nejvýše 6 souborů.',1);return}
   btn.disabled=true; say(files.length?'Zmenšuji a odesílám fotografie…':'Odesílám…');

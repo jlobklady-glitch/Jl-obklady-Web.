@@ -223,3 +223,10 @@ footer nav a{color:var(--mut)}
 .cmp2 h2{font-size:20px;margin:0 0 10px}
 .cmp2 .us h2{color:var(--brass)}.cmp2 .them{color:var(--mut)}
 .cmp2 ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.moreform{border:1px solid var(--joint);padding:0 16px;margin:6px 0 4px;background:var(--slab)}
+.moreform>summary{cursor:pointer;padding:14px 0;font:600 15px var(--b);color:var(--brass);list-style:none}
+.moreform>summary::-webkit-details-marker{display:none}
+.moreform>summary::before{content:"+";display:inline-block;width:18px;font-weight:700}
+.moreform[open]>summary::before{content:"−"}
+.moreform[open]{padding-bottom:16px}
+@media(max-width:860px){.two>.info{order:2}}
