@@ -15,12 +15,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
-</head>
+<style>.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:32px}.rgrid a{display:block;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--joint)}.rgrid img{width:100%;height:100%;object-fit:cover;display:block}@media(max-width:560px){.rgrid{grid-template-columns:1fr 1fr}.rgrid a:last-child{display:none}}</style></head>
 <body>
 <header><div class="wrap">
  <a class="logo" href="/">JL<b>-</b>OBKLADY</a>
  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu"><span class="t1">Objevit více</span><span class="t2">Zavřít</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button>
- <nav id="menu" aria-label="Hlavní menu"><a href="/#sluzby">Koupelny</a><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/#postup">Postup a cena</a><a href="/#o-nas">O nás</a><a href="/poptavka/" class="btn">Nezávazná poptávka</a></nav>
+ <nav id="menu" aria-label="Hlavní menu"><a href="/#sluzby">Koupelny</a><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/realizace/">Realizace</a><a href="/#postup">Postup a cena</a><a href="/#o-nas">O nás</a><a href="/poptavka/" class="btn">Nezávazná poptávka</a></nav>
 </div></header>
 
 <main>
@@ -88,7 +88,13 @@
 
 <section id="realizace"><div class="wrap">
  <h2>Naše realizace</h2>
- <p class="lead">Fotografie a videa z naší práce najdete na sociálních sítích. Tam přidáváme nové zakázky průběžně.</p>
+ <p class="lead">Koupelny a technické místnosti z Pardubického kraje, velké formáty až 120×120 cm, epoxidové spáry a Jolly rohy. Podívejte se na fotky před a po.</p>
+ <div class="rgrid">
+  <a href="/realizace/#t1"><img src="/assets/real/t1-4-t.jpg" alt="Koupelna Tisová, obklad 120×120 cm" loading="lazy"></a>
+  <a href="/realizace/#rv"><img src="/assets/real/rv-10-t.jpg" alt="Koupelna v podkroví, Rviště" loading="lazy"></a>
+  <a href="/realizace/#u2"><img src="/assets/real/u2-4-t.jpg" alt="Koupelna Ústí nad Orlicí, dekor dřeva a mozaika" loading="lazy"></a>
+ </div>
+ <p style="margin-top:22px"><a class="btn" href="/realizace/">Všechny realizace</a></p>
  <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
 </div></section>
 
@@ -122,7 +128,7 @@
  <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
 </div></section>
 </main>
-<footer><div class="wrap"><span>JL Obklady | Tile & Style · Obklady, dlažby, koupelny, dekorativní stěrky</span><nav aria-label="Odkazy"><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/poptavka/">Poptávka</a></nav></div></footer>
+<footer><div class="wrap"><span>JL Obklady | Tile & Style · Obklady, dlažby, koupelny, dekorativní stěrky</span><nav aria-label="Odkazy"><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/realizace/">Realizace</a><a href="/poptavka/">Poptávka</a></nav></div></footer>
 <div class="call" id="call"><div class="call-menu" id="callMenu"><a href="tel:+420725967231">Lukáš<small>+420 725 967 231</small></a><a href="tel:+420732523129">Honza<small>+420 732 523 129</small></a><a href="https://wa.me/420725967231" target="_blank" rel="noopener" data-track="whatsapp">WhatsApp<small>napsat zprávu</small></a></div><button type="button" class="btn" id="callBtn" aria-expanded="false" aria-controls="callMenu">Zavolat</button></div>
 <script src="/assets/site.js" defer></script>
 <script>
