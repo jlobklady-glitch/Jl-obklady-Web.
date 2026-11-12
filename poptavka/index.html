@@ -185,7 +185,7 @@
    var res=await fetch(API,{method:'POST',body:fd,signal:ctl.signal}); clearTimeout(to);
    var data={}; try{data=await res.json()}catch(_){}
    if(res.ok&&data.ok){
-    window.jlTrack&&jlTrack('form_submit');form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, poptávku jsme přijali.</h3><p>Orientační cenu vám připravíme a pošleme e-mailem nebo se ozveme telefonicky, obvykle do dvou pracovních dnů.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
+    window.jlTrack&&jlTrack('poptavka_odeslana');form.outerHTML='<div class="thanks" role="status"><h3>Děkujeme, poptávku jsme přijali.</h3><p>Orientační cenu vám připravíme a pošleme e-mailem nebo se ozveme telefonicky, obvykle do dvou pracovních dnů.'+(data.failed?' Některé soubory se nepodařilo nahrát, v případě potřeby nám je pošlete e-mailem.':'')+'</p></div>';
     return;
    }
    say(data.error||'Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);
