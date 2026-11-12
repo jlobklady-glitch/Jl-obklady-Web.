@@ -101,11 +101,6 @@ textarea{min-height:120px}
 footer{border-top:1px solid var(--joint);padding:34px 0;color:var(--mut);font-size:15px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 /* partneři – světlý pás, loga jsou navržená na bílé */
-.partners{background:#fff;color:var(--ink);border-top:0}
-.partners h2{color:var(--ink)}
-.partners .lead{color:#5a5650}
-.partners .strip{overflow-x:auto;margin-top:36px;-webkit-overflow-scrolling:touch}
-.partners img{display:block;width:100%;min-width:760px;height:auto}
 .social{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:22px}
 .social a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:2px}
 .social a:hover{color:#fff}
