@@ -1,6 +1,6 @@
 /* Google Tag Manager + souhlas s měřením (Consent Mode v2). Do GTM_ID se vkládá ID kontejneru. */
 (function(){
- var GTM_ID='GTM-NMV38KZ6',KEY='jl_consent';
+ var GTM_ID='GTM-MTH3NGDL',KEY='jl_consent';
  window.dataLayer=window.dataLayer||[];
  function gtag(){dataLayer.push(arguments)}
  var saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
