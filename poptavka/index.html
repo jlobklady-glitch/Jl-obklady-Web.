@@ -83,7 +83,7 @@
 
  // ---- tabulka místností ----
  var TYPES=[['koupelna','Koupelna'],['wc','WC'],['kuchyn','Kuchyň'],['chodba','Chodba / hala'],['jine','Jiná místnost']];
- var FORMATS=[['nevim','Formát zatím nevím'],['30x60','do 30×60 cm'],['60x60','60×60 cm'],['60x120','60×120 cm'],['120x120','120×120 cm'],['120x280','velkoformát (desky)']];
+ var FORMATS=[['nevim','Formát zatím nevím'],['30x60','do 30×60 cm'],['60x60','60×60 cm'],['60x120','60×120 cm'],['120x120','120×120 cm'],['120x280','XXL desky (až 160×320 cm)']];
  var roomsBox=document.getElementById('rooms'), addBtn=document.getElementById('addRoom');
  function opt(a,sel){return a.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===sel?' selected':'')+'>'+x[1]+'</option>'}).join('')}
  function chk(k,label,on){return '<label class="check"><input type="checkbox" data-k="'+k+'"'+(on?' checked':'')+'><span>'+label+'</span></label>'}
