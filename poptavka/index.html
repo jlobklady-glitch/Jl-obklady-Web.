@@ -40,16 +40,6 @@
  <p class="lead">Stačí jméno a telefon, ozveme se vám. <b>Orientační cenu připravíme zdarma a nezávazně.</b></p>
 </div><div class="wrap two" style="margin-top:20px">
  <div class="info">
-  <div class="offer">
-   <h3>Chcete přesný rozpočet? Balíček za <span data-fee>4 000 Kč</span></h3>
-   <p class="credit"><b>Celá cena balíčku se vám na konci zakázky odečte z ceny.</b> Objednáte ho, až budete chtít jít dál, a tím si rezervujete termín.</p>
-   <ul class="checks">
-    <li><b>Rezervace termínu.</b> Termín zahájení domluvíme podle vaší stavby a její připravenosti a po zaplacení ho držíme pro vás.</li>
-    <li><b>Položkový rozpočet s cenou materiálu.</b> Rozpis prací i materiálů, takže předem víte, za co platíte.</li>
-    <li><b>Zaměření a schůzka přímo na místě.</b> Probereme rozložení obkladů a dlažby, návaznosti, rohy, niky i sprchový kout a navrhneme řešení.</li>
-    <li><b>Orientační měření vlhkosti podkladu.</b> U podlahového topení po provedené nátopové zkoušce zkontrolujeme, jestli je podklad připravený na pokládku.</li>
-   </ul>
-  </div>
   <p class="lead">Telefon: Lukáš <a href="tel:+420725967231">+420 725 967 231</a> · Honza <a href="tel:+420732523129">+420 732 523 129</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a></p>
   <p class="small">Působíme ve východních Čechách a okolí: Pardubicko, Hradecko, Orlickoústecko, Chrudimsko, Svitavsko a Rychnovsko.</p>
   <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
@@ -87,8 +77,6 @@
 <script>
 (function(){
  var API='https://abmlhxkufkphmkqjjvwi.supabase.co/functions/v1/poptavka';
- var FEE='4 000 Kč'; // jediné místo, kde se mění výše poplatku
- Array.prototype.forEach.call(document.querySelectorAll('[data-fee]'),function(e){e.textContent=FEE});
  var form=document.getElementById('poptavka'); if(!form) return;
  var st=document.getElementById('fs'), btn=form.querySelector('button[type=submit]');
  form.elements.t.value=Date.now();
