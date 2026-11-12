@@ -225,3 +225,7 @@ footer nav a{color:var(--mut)}
 .moreform[open]>summary::before{content:"−"}
 .moreform[open]{padding-bottom:16px}
 @media(max-width:860px){.two>.info{order:2}}
+#cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:640px;margin:0 auto;background:var(--slab);border:1px solid var(--brass);padding:16px 18px;display:flex;gap:14px 20px;align-items:center;flex-wrap:wrap;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#cc p{margin:0;flex:1 1 260px;font-size:15px;line-height:1.5;color:var(--stone)}
+#cc div{display:flex;gap:10px;flex-wrap:wrap}
+#cc .btn{padding:10px 16px;font-size:15px}
