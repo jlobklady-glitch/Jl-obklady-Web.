@@ -14,37 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
-<style>
-.pj{padding:clamp(48px,7vw,84px) 0;border-top:1px solid var(--joint)}
-.pj h2{max-width:none;font-size:clamp(26px,3.6vw,40px)}
-.pj .loc{color:var(--brass);font:600 15px var(--h);font-stretch:108%;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
-.tags li{border:1px solid var(--joint);background:var(--slab);padding:6px 12px;font-size:14px;color:var(--stone)}
-.pj h3{font-size:18px;margin:34px 0 12px;color:var(--stone);font-weight:600}
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
-.gal button{all:unset;cursor:zoom-in;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--slab);border:1px solid var(--joint)}
-.gal button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
-.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-.gal button:hover img{transform:scale(1.03)}
-.gal.before button{aspect-ratio:4/3}
-.ba{position:relative;max-width:560px;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--joint);margin-top:8px;user-select:none;touch-action:pan-y;background:var(--slab)}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.ba .top{clip-path:inset(0 50% 0 0)}
-.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.ba .bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--brass);pointer-events:none}
-.ba .bar::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 4px rgba(23,24,26,.5)}
-.ba .lb{position:absolute;bottom:10px;padding:3px 10px;background:rgba(23,24,26,.8);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;pointer-events:none}
-.ba .l1{left:10px}.ba .l2{right:10px}
-.ba:focus-within{outline:2px solid var(--brass)}
-#lb{position:fixed;inset:0;z-index:50;background:rgba(10,10,12,.95);display:none;align-items:center;justify-content:center}
-#lb.on{display:flex}
-#lb img{max-width:94vw;max-height:84vh;object-fit:contain}
-#lb .cap{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:var(--stone);font-size:15px;padding:0 60px}
-#lb button{position:absolute;background:rgba(31,32,35,.9);color:var(--porc);border:1px solid var(--joint);width:46px;height:46px;font-size:22px;cursor:pointer}
-#lb .x{top:14px;right:14px}#lb .p{left:10px;top:50%;margin-top:-23px}#lb .n{right:10px;top:50%;margin-top:-23px}
-.nota{margin-top:40px;color:var(--mut);font-size:15px;max-width:62ch}
-</style>
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/gallery.css">
 </head>
 <body>
 <header><div class="wrap">
@@ -88,7 +58,7 @@
 <button type="button" data-full="/assets/real/t1b-2.jpg" data-alt="Koupelna Tisová 1, před rekonstrukcí"><img src="/assets/real/t1b-2-t.jpg" alt="Koupelna Tisová 1, před rekonstrukcí" loading="lazy" decoding="async"></button>
 <button type="button" data-full="/assets/real/t1b-3.jpg" data-alt="Koupelna Tisová 1, před rekonstrukcí"><img src="/assets/real/t1b-3-t.jpg" alt="Koupelna Tisová 1, před rekonstrukcí" loading="lazy" decoding="async"></button>
 </div>
-<h3>Po rekonstrukci</h3><div class="gal">
+<h3>Po rekonstrukci</h3><div class="gal"><button type="button" data-full="/assets/real/t1-0.jpg" data-alt="Koupelna Tisová 1, podsvícená nika a WC tlačítko z obkladu"><img src="/assets/real/t1-0-t.jpg" alt="Koupelna Tisová 1, podsvícená nika a WC tlačítko z obkladu" loading="lazy" decoding="async"></button>
 <button type="button" data-full="/assets/real/t1-4.jpg" data-alt="Koupelna Tisová 1"><img src="/assets/real/t1-4-t.jpg" alt="Koupelna Tisová 1" loading="lazy" decoding="async"></button>
 <button type="button" data-full="/assets/real/t1-2.jpg" data-alt="Koupelna Tisová 1"><img src="/assets/real/t1-2-t.jpg" alt="Koupelna Tisová 1" loading="lazy" decoding="async"></button>
 <button type="button" data-full="/assets/real/t1-3.jpg" data-alt="Koupelna Tisová 1"><img src="/assets/real/t1-3-t.jpg" alt="Koupelna Tisová 1" loading="lazy" decoding="async"></button>
@@ -154,6 +124,7 @@
 <button type="button" data-full="/assets/real/ci-1.jpg" data-alt="Čistá u Litomyšle"><img src="/assets/real/ci-1-t.jpg" alt="Čistá u Litomyšle" loading="lazy" decoding="async"></button>
 <button type="button" data-full="/assets/real/ci-3.jpg" data-alt="Čistá u Litomyšle"><img src="/assets/real/ci-3-t.jpg" alt="Čistá u Litomyšle" loading="lazy" decoding="async"></button>
 </div></div></section>
+<section class="pj" id="sterky"><div class="wrap"><p class="loc">Dekorativní stěrky</p><h2>Stěrky s kresbou a strukturou</h2><p class="lead">Dekorativní stěrky na stěny a podlahy. Přírodní struktura, na přání i vlastní motiv, například kompas.</p><ul class="tags"><li>Dekorativní stěrka</li><li>Vlastní motiv</li></ul><h3>Fotografie</h3><div class="gal"><button type="button" data-full="/assets/real/st-1.jpg" data-alt="Dekorativní stěrka s motivem kompasu"><img src="/assets/real/st-1-t.jpg" alt="Dekorativní stěrka s motivem kompasu" loading="lazy" decoding="async"></button><button type="button" data-full="/assets/real/st-2.jpg" data-alt="Dekorativní stěrka, detail motivu"><img src="/assets/real/st-2-t.jpg" alt="Dekorativní stěrka, detail motivu" loading="lazy" decoding="async"></button><button type="button" data-full="/assets/real/st-3.jpg" data-alt="Dekorativní stěrka, struktura"><img src="/assets/real/st-3-t.jpg" alt="Dekorativní stěrka, struktura" loading="lazy" decoding="async"></button><button type="button" data-full="/assets/real/st-4.jpg" data-alt="Dekorativní stěrka, detail struktury"><img src="/assets/real/st-4-t.jpg" alt="Dekorativní stěrka, detail struktury" loading="lazy" decoding="async"></button></div></div></section>
 <section><div class="wrap"><div class="cta-band" style="margin-top:0"><p>Chcete podobnou koupelnu?</p><a class="btn" href="/poptavka/">Nezávazná poptávka</a></div><p class="nota">Další fotografie a videa najdete na <a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagramu @jl_obklady</a>.</p></div></section>
 </main><div id="lb" role="dialog" aria-modal="true" aria-label="Fotografie"><button class="x" type="button" aria-label="Zavřít">×</button><button class="p" type="button" aria-label="Předchozí">‹</button><img alt=""><button class="n" type="button" aria-label="Další">›</button><div class="cap"></div></div>
 
