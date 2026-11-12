@@ -15,6 +15,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.modes button{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--joint);background:var(--slab);padding:14px 16px;color:var(--stone);display:block}
+.modes button b{display:block;color:var(--porc);font:600 17px var(--h);font-stretch:108%;margin-bottom:4px}
+.modes button span{font-size:14px;line-height:1.4;display:block}
+.modes button[aria-pressed=true]{border-color:var(--brass);box-shadow:inset 0 0 0 1px var(--brass)}
+.modes button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+#moreForm.simple{display:none}
+#moreForm.full>summary{display:none}
+@media(max-width:560px){.modes{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header><div class="wrap">
@@ -44,6 +55,7 @@
   <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
  </div>
  <form id="poptavka" novalidate>
+  <div class="modes" role="group" aria-label="Typ poptávky"><button type="button" id="modeS" aria-pressed="true"><b>Jednoduchá poptávka</b><span>Stačí jméno a telefon, ozveme se vám.</span></button><button type="button" id="modeF" aria-pressed="false"><b>Znám rozměry, mám fotky</b><span>Vyplníte místnosti a přiložíte fotky, cena bude přesnější.</span></button></div>
   <div class="hp" aria-hidden="true"><label>Web<input name="website" tabindex="-1" autocomplete="off"></label></div>
   <div class="g2"><label>Jméno<input name="name" required maxlength="120" autocomplete="name"></label><label>Telefon<input name="phone" required type="tel" maxlength="40" autocomplete="tel"></label></div>
   <div class="g2"><label>Místo realizace<input name="location" maxlength="200" placeholder="Obec" autocomplete="address-level2"></label><label>Co plánujete?<select name="plan"><option value="Koupelna">Koupelnu</option><option value="Obklad">Obklad stěn</option><option value="Dlažba">Dlažbu</option><option value="Jiné">Něco jiného</option></select></label></div>
@@ -52,7 +64,7 @@
   <input type="hidden" name="t" value="">
   <input type="hidden" name="work_type" value="">
   <input type="hidden" name="rooms" value="">
-  <details class="moreform" id="moreForm"><summary>Chci přesnější orientační cenu hned (rozměry, fotky, termín)</summary>
+  <details class="moreform simple" id="moreForm"><summary>Chci přesnější orientační cenu hned (rozměry, fotky, termín)</summary>
    <label>Termín<input name="timing" maxlength="120" placeholder="Např. jaro 2027"></label>
    <fieldset class="rooms"><legend>Místnosti a rozměry</legend>
     <p class="small">Přidejte každou místnost, kde se bude obkládat nebo dlaždit. Rozměry stačí přibližné.</p>
@@ -118,7 +130,19 @@
  function sub(d){['walls','niche','shower','bath','waterproof'].forEach(function(k){var c=d.querySelector('[data-k='+k+']'),b=d.querySelector('[data-sub='+k+']');if(c&&b)b.classList.toggle('on',c.checked)})}
  function renum(){Array.prototype.forEach.call(roomsBox.children,function(d,i){d.querySelector('b').textContent='Místnost '+(i+1)});addBtn.style.display=roomsBox.children.length>=8?'none':''}
  addBtn.addEventListener('click',function(){addRoom('koupelna')});
+
  var more=document.getElementById('moreForm');
+ var mS=document.getElementById('modeS'),mF=document.getElementById('modeF'),lead=document.querySelector('main .lead');
+ var LEAD_S=lead?lead.innerHTML:'';
+ function mode(full){
+  mS.setAttribute('aria-pressed',full?'false':'true');mF.setAttribute('aria-pressed',full?'true':'false');
+  more.classList.toggle('simple',!full);more.classList.toggle('full',full);more.open=full;
+  if(lead)lead.innerHTML=full?'Vyplňte rozměry místností a přiložte fotky nebo plánek. <b>Orientační cenu pak připravíme přesněji, zdarma a nezávazně.</b>':LEAD_S;
+  if(full&&!roomsBox.children.length)addRoom('koupelna');
+  try{history.replaceState(null,'',full?'#presna':location.pathname)}catch(_){}
+ }
+ mS.addEventListener('click',function(){mode(false)});mF.addEventListener('click',function(){mode(true)});
+ if(location.hash==='#presna')mode(true);
  more.addEventListener('toggle',function(){if(more.open&&!roomsBox.children.length)addRoom('koupelna')});
  function n(v){var x=parseFloat(String(v).replace(',','.'));return isFinite(x)&&x>0?x:0}
  function readRooms(){
@@ -158,7 +182,7 @@
   if(!e.name.value.trim()){say('Vyplňte prosím jméno.',1);e.name.focus();return}
   if(e.phone.value.replace(/\D/g,'').length<7){say('Zadejte prosím platný telefon.',1);e.phone.focus();return}
   if(!e.consent.checked){say('Potvrďte prosím souhlas se zpracováním údajů.',1);e.consent.focus();return}
-  var rr=more.open&&roomsBox.children.length?readRooms():{rooms:[],error:''}; if(rr.error){say(rr.error,1);return}
+  var rr=more.classList.contains('full')&&roomsBox.children.length?readRooms():{rooms:[],error:''}; if(rr.error){say(rr.error,1);return}
   e.rooms.value=JSON.stringify(rr.rooms);
   e.work_type.value=rr.rooms.some(function(r){return r.type==='koupelna'})?'Koupelna':(rr.rooms.some(function(r){return r.walls})&&rr.rooms.some(function(r){return r.floor})?'Jiné':(rr.rooms.some(function(r){return r.walls})?'Obklad':(rr.rooms.length?'Dlažba':'Jiné')));
   if(!rr.rooms.length)e.work_type.value=e.plan.value;
