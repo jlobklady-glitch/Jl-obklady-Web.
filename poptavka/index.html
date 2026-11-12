@@ -35,15 +35,10 @@
 </div></header>
 
 <main>
-<section style="padding-top:0"><div class="wrap">
- <h1 style="font-size:clamp(30px,5vw,48px);margin-top:28px">Nezávazná poptávka</h1>
+<section style="padding-top:0"><div class="wrap" style="max-width:700px;text-align:center">
+ <h1 style="font-size:clamp(30px,5vw,48px);margin-top:28px;max-width:none">Nezávazná poptávka</h1>
  <p class="lead">Stačí jméno a telefon, ozveme se vám. <b>Orientační cenu připravíme zdarma a nezávazně.</b></p>
-</div><div class="wrap two" style="margin-top:20px">
- <div class="info">
-  <p class="lead">Telefon: Lukáš <a href="tel:+420725967231">+420 725 967 231</a> · Honza <a href="tel:+420732523129">+420 732 523 129</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a></p>
-  <p class="small">Působíme ve východních Čechách a okolí: Pardubicko, Hradecko, Orlickoústecko, Chrudimsko, Svitavsko a Rychnovsko.</p>
-  <p class="social"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
- </div>
+</div><div class="wrap" style="margin-top:20px;max-width:700px">
  <form id="poptavka" novalidate>
   <div class="modes" role="group" aria-label="Typ poptávky"><button type="button" id="modeS" aria-pressed="true"><b>Jednoduchá poptávka</b><span>Stačí jméno a telefon, ozveme se vám.</span></button><button type="button" id="modeF" aria-pressed="false"><b>Znám rozměry, mám fotky</b><span>Vyplníte místnosti a přiložíte fotky, cena bude přesnější.</span></button></div>
   <div class="hp" aria-hidden="true"><label>Web<input name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -67,8 +62,13 @@
   <div id="ts" class="ts"></div>
   <button class="btn" type="submit">Chci nezávaznou nabídku</button>
   <p id="fs" class="fs" role="status" aria-live="polite"></p>
-  <p class="small">Ozveme se obvykle do dvou pracovních dnů. Údaje použijeme jen k vyřízení poptávky.</p>
+  <p class="small" style="text-align:center;max-width:none">Ozveme se obvykle do dvou pracovních dnů. Údaje použijeme jen k vyřízení poptávky.</p>
  </form>
+ <div class="info" style="margin-top:44px;padding-top:28px;border-top:1px solid var(--joint);text-align:center">
+  <p class="lead">Telefon: Lukáš <a href="tel:+420725967231">+420 725 967 231</a> · Honza <a href="tel:+420732523129">+420 732 523 129</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a></p>
+  <p class="small">Působíme ve východních Čechách a okolí: Pardubicko, Hradecko, Orlickoústecko, Chrudimsko, Svitavsko a Rychnovsko.</p>
+  <p class="social" style="justify-content:center"><a href="https://www.instagram.com/jl_obklady" target="_blank" rel="noopener">Instagram @jl_obklady</a><a href="https://youtube.com/@jl_obklady" target="_blank" rel="noopener">YouTube JL-OBKLADY</a><a href="https://www.facebook.com/share/1KxSvnfTCf/" target="_blank" rel="noopener">Facebook</a></p>
+ </div>
 </div></section>
 </main>
 <footer><div class="wrap"><span>JL Obklady | Tile & Style · Obklady, dlažby, koupelny, dekorativní stěrky</span><nav aria-label="Odkazy"><a href="/3d-stavba/">3D stavba a srovnání</a><a href="/detaily/">Detaily a Jolly rohy</a><a href="/realizace/">Realizace</a><a href="/poptavka/">Poptávka</a></nav></div></footer>
