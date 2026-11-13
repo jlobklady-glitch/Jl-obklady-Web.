@@ -235,9 +235,10 @@ footer nav a{color:var(--mut)}
 .legal ul{padding-left:20px;margin:10px 0}
 .legal a{color:var(--porc);border-bottom:1px solid var(--brass);text-decoration:none}
 footer .fid{flex:1 1 100%;margin:0;font-size:13px;line-height:1.55}
-.legal h3{font-size:18px;margin:18px 0 6px;color:var(--porc)}
+.legal h3,.legal h5{font-size:18px;margin:18px 0 6px;color:var(--porc)}
 .cktab{border:1px solid var(--joint);margin:10px 0 14px}
-.ckrow{display:grid;grid-template-columns:130px 1fr 1.4fr;gap:6px 18px;padding:14px 16px;border-top:1px solid var(--joint);color:var(--stone);font-size:15px;line-height:1.55}
+.ckrow{display:grid;grid-template-columns:130px 1fr;gap:6px 18px;padding:14px 16px;border-top:1px solid var(--joint);color:var(--stone);font-size:15px;line-height:1.55}
 .ckrow:first-child{border-top:0}
 .ckrow b{color:#fff;word-break:break-all}
 @media(max-width:640px){.ckrow{grid-template-columns:1fr}}
+.legal h5{font-size:16px;font-weight:700}
