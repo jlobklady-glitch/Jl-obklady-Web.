@@ -12,9 +12,7 @@
 <meta property="og:title" content="Nezávazná poptávka"><meta property="og:description" content="Napište nám, co plánujete, a zadejte rozměry. Orientační cenu koupelny, obkladů nebo dlažby vám připravíme zdarma a nezávazně. JL-OBKLADY, východní Čechy."><meta property="og:url" content="https://jl-obklady-web.jlobklady.workers.dev/poptavka/"><meta property="og:image" content="https://jl-obklady-web.jlobklady.workers.dev/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#17181a">
-
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
 .modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
@@ -59,11 +57,11 @@
    </fieldset>
   </details>
   <label>Fotografie nebo plánek <span class="small">(nepovinné, až 6 souborů, fotky se před odesláním zmenší)</span><input name="photos" type="file" accept="image/*,.pdf" multiple></label>
-  <label class="check"><input name="consent" type="checkbox" value="1" required><span>Souhlasím se zpracováním uvedených údajů za účelem zpracování orientační nabídky. Více v <a href="/ochrana-udaju/" target="_blank" rel="noopener">zásadách ochrany osobních údajů</a>.</span></label>
+  <p class="small" style="margin:0 0 14px;max-width:none">Údaje (správce Lukáš Heger) použijeme jen k vyřízení poptávky a přípravě nabídky. Nikam je neprodáváme a neuchováváme je déle, než je nutné. Více informací o zpracování a vašich právech najdete <a href="/ochrana-udaju/#poptavka" target="_blank" rel="noopener">zde</a>.</p>
   <div id="ts" class="ts"></div>
   <button class="btn" type="submit">Chci nezávaznou nabídku</button>
   <p id="fs" class="fs" role="status" aria-live="polite"></p>
-  <p class="small" style="text-align:center;max-width:none">Ozveme se obvykle do dvou pracovních dnů. Údaje (správce Lukáš Heger) použijeme jen k vyřízení poptávky a přípravě nabídky, nikam je neprodáváme a po vyřízení je neuchováváme déle, než je nutné. Více informací o zpracování a vašich právech najdete <a href="/ochrana-udaju/#poptavka" target="_blank" rel="noopener">zde</a>.</p>
+  <p class="small" style="text-align:center;max-width:none">Ozveme se obvykle do dvou pracovních dnů.</p>
  </form>
  <div class="info" style="margin-top:44px;padding-top:28px;border-top:1px solid var(--joint);text-align:center">
   <p class="lead">Telefon: Lukáš <a href="tel:+420725967231">+420 725 967 231</a> · Honza <a href="tel:+420732523129">+420 732 523 129</a><br>E-mail: <a href="mailto:jlobklady@gmail.com">jlobklady@gmail.com</a></p>
@@ -170,7 +168,6 @@
   var e=form.elements;
   if(!e.name.value.trim()){say('Vyplňte prosím jméno.',1);e.name.focus();return}
   if(e.phone.value.replace(/\D/g,'').length<7){say('Zadejte prosím platný telefon.',1);e.phone.focus();return}
-  if(!e.consent.checked){say('Potvrďte prosím souhlas se zpracováním údajů.',1);e.consent.focus();return}
   var rr=more.classList.contains('full')&&roomsBox.children.length?readRooms():{rooms:[],error:''}; if(rr.error){say(rr.error,1);return}
   e.rooms.value=JSON.stringify(rr.rooms);
   e.work_type.value=rr.rooms.some(function(r){return r.type==='koupelna'})?'Koupelna':(rr.rooms.some(function(r){return r.walls})&&rr.rooms.some(function(r){return r.floor})?'Jiné':(rr.rooms.some(function(r){return r.walls})?'Obklad':(rr.rooms.length?'Dlažba':'Jiné')));
