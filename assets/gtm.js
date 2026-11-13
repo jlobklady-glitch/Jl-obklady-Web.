@@ -12,12 +12,13 @@
  function banner(){
   if(document.getElementById('cc'))return;
   var d=document.createElement('div');d.id='cc';d.setAttribute('role','dialog');d.setAttribute('aria-label','Souhlas s měřením návštěvnosti');
-  d.innerHTML='<p>Používáme anonymní měření návštěvnosti, abychom věděli, co na webu funguje. Zapnout ho můžete jen s vaším souhlasem.</p><div><button type="button" class="btn" data-v="granted">Souhlasím</button><button type="button" class="btn ghost" data-v="denied">Nesouhlasím</button></div>';
+  d.innerHTML='<p>Používáme anonymní měření návštěvnosti, abychom věděli, co na webu funguje. Zapnout ho můžete jen s vaším souhlasem. <a href="/ochrana-udaju/">Více informací</a></p><div><button type="button" class="btn" data-v="granted">Souhlasím</button><button type="button" class="btn ghost" data-v="denied">Nesouhlasím</button></div>';
   d.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-v');if(v)decide(v)});
   document.body.appendChild(d);
  }
  document.addEventListener('DOMContentLoaded',function(){
   if(!saved)banner();
+  var o=document.getElementById('ccOpen');if(o)o.addEventListener('click',function(e){e.preventDefault();banner()});
   var n=document.querySelector('footer nav');
   if(n){var a=document.createElement('a');a.href='#';a.textContent='Nastavení cookies';a.addEventListener('click',function(e){e.preventDefault();banner()});n.appendChild(a)}
  });
