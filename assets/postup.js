@@ -11,7 +11,7 @@
    if(!e.isIntersecting)return;
    var i=lis.indexOf(e.target);
    e.target.style.transitionDelay=((i%n)*120)+'ms';
-   e.target.classList.add('in');io.unobserve(e.target);
+   e.target.classList.add('in');io.unobserve(e.target);(function(t){setTimeout(function(){t.classList.add('done')},(i%n)*120+1000)})(e.target);
   });
  },{threshold:.12});
  lis.forEach(function(li){io.observe(li)});

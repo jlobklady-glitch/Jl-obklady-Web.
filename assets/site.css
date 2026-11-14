@@ -255,3 +255,13 @@ form p.small a{color:var(--porc);border-bottom:1px solid var(--brass);text-decor
 .steps3d.fly li{opacity:0;transform:translateZ(-520px) scale(.94);filter:blur(5px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.8,.2,1),filter .7s ease}
 .steps3d.fly li.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.lay .w{opacity:1;transform:none;animation:none}.lay .em::after{transform:none;animation:none}.steps3d.fly li{opacity:1;transform:none;filter:none;transition:none}}
+/* Kroky postupu: při najetí myší se karta lehce zvětší a po odjetí se vrátí; na dotykových telefonech jen při stisku */
+.steps3d li{position:relative}
+.steps3d li.done{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease;transition-delay:0s!important}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ .steps3d li:hover,.steps3d.fly li.in:hover{transform:scale(1.045);z-index:2;border-color:var(--brass);background:#26272b;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+ .steps3d.fly li:not(.in):hover{transform:translateZ(-520px) scale(.94)}
+}
+@media (hover:none) and (prefers-reduced-motion:no-preference){
+ .steps3d li:active,.steps3d.fly li.in:active{transform:scale(1.02);border-color:var(--brass)}
+}
