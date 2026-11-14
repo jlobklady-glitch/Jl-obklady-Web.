@@ -265,3 +265,8 @@ form p.small a{color:var(--porc);border-bottom:1px solid var(--brass);text-decor
 @media (hover:none) and (prefers-reduced-motion:no-preference){
  .steps3d li:active,.steps3d.fly li.in:active{transform:scale(1.02);border-color:var(--brass)}
 }
+/* Jak probíhá spolupráce: kroky 1 až 5 postupně přilétají zprava na své místo */
+#postup{overflow-x:clip}
+.steps.fly li{opacity:0;transform:translateX(90px);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.steps.fly li.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.steps.fly li{opacity:1;transform:none;transition:none}}
