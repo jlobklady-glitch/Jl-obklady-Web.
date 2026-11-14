@@ -243,3 +243,15 @@ footer .fid{flex:1 1 100%;margin:0;font-size:13px;line-height:1.55}
 @media(max-width:640px){.ckrow{grid-template-columns:1fr}}
 .legal h5{font-size:16px;font-weight:700}
 form p.small a{color:var(--porc);border-bottom:1px solid var(--brass);text-decoration:none}
+
+/* Úvodní nadpis: slova dosednou jako dlaždice, pak se pod „A vydrží.“ vykreslí mosazná spára */
+.lay .w{display:inline-block;opacity:0;transform:translateY(.5em) scale(.96);animation:layTile .55s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*.09s + .1s)}
+@keyframes layTile{60%{opacity:1}to{opacity:1;transform:none}}
+.lay .em{position:relative;display:inline-block;color:var(--brass)}
+.lay .em::after{content:"";position:absolute;left:0;bottom:-.06em;height:.06em;width:100%;background:var(--brass);transform:scaleX(0);transform-origin:left;animation:layJoint .9s 1.1s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes layJoint{to{transform:scaleX(1)}}
+/* Postup stavby: kroky se blíží zepředu a po dosednutí zůstanou statické */
+.steps3d.fly{perspective:1000px;perspective-origin:50% 25%}
+.steps3d.fly li{opacity:0;transform:translateZ(-520px) scale(.94);filter:blur(5px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.8,.2,1),filter .7s ease}
+.steps3d.fly li.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){.lay .w{opacity:1;transform:none;animation:none}.lay .em::after{transform:none;animation:none}.steps3d.fly li{opacity:1;transform:none;filter:none;transition:none}}
